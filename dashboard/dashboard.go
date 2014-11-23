@@ -1,8 +1,9 @@
 package dashboard
 
 import (
-	"fmt"
 	"net/http"
+	"path"
+	"runtime"
 
 	"github.com/codegangsta/negroni"
 	hr "github.com/julienschmidt/httprouter"
@@ -11,14 +12,11 @@ import (
 	middle "github.com/dockerboard/dockerboard/dashboard/middleware"
 )
 
-func Index(w http.ResponseWriter, r *http.Request, _ hr.Params) {
-	fmt.Fprint(w, "Welcome!\n")
-}
-
 func Serve() {
+	_, filename, _, _ := runtime.Caller(0)
+	dir := path.Join(path.Dir(filename), "../client")
 	router := hr.New()
-	router.GET("/", Index)
-
+	router.ServeFiles("/*filepath", http.Dir(dir))
 	n := negroni.Classic()
 	n.Use(middle.Logrus())
 	n.UseHandler(router)
