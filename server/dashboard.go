@@ -9,7 +9,7 @@ import (
 	hr "github.com/julienschmidt/httprouter"
 
 	// middlewares
-	middle "github.com/dockerboard/dockerboard/dashboard/middleware"
+	middle "github.com/dockerboard/dockerboard/server/middleware"
 )
 
 func Serve() {
