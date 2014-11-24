@@ -6,7 +6,7 @@ Simple dashboards, visualizations, managements for your dockers.
 
 ## Development
 
-Currently it's simple.   
+Currently it's very simple.   
 Yes, we need docker. :)
 
 
