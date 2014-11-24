@@ -10,7 +10,7 @@ Currently it's simple.
 Yes, we need docker. :)
 
 
-### Install nppm & bower packages
+### Install npm & bower packages
 
 ```
 cd client/
