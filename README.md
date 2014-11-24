@@ -1,7 +1,7 @@
 
 # Dockerboard
 
-Simple dashboards, visualizations, managements for your dockers. 
+Simple dashboards, visualizations, managements for your dockers.
 
 
 ## Build With
