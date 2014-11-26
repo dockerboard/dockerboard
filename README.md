@@ -3,6 +3,8 @@
 
 Simple dashboards, visualizations, managements for your dockers.
 
+Lovingly created and maintained by [DockerPool][] Team.
+
 
 ## Development
 
@@ -30,3 +32,5 @@ go run dockerboard.go
 - [Famous.js](http://famo.us/) &mdash;  We use Famous.js to build beautiful experiences on any device.
 - [D3.js](http://d3js.org/) &mdash; We use D3.js for drawing, bring data.
 
+
+[DockerPool]: http://dockerpool.com/
