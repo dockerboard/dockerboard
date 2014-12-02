@@ -4,7 +4,7 @@
 
   var appName = app.name = 'dockerboard';
   app.registerModule = registerModule;
-  app.dependencies = ['famous.angular', 'ui.router'];
+  app.dependencies = ['famous.angular', 'ui.router', 'ngMaterial'];
 
   function registerModule(moduleName, dependencies) {
     angular.module(moduleName, dependencies || []);

@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html class="no-js" ng-app="dockerboard">
+<html lang="en" class="no-js" ng-app="dockerboard" ng-strict-di>
   <head>
     <meta charset="utf-8">
     <title>Dockerboard</title>
@@ -10,11 +10,42 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
-    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
     <link rel="stylesheet" href="bower_components/famous-angular/dist/famous-angular.css">
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
+    <link rel="stylesheet" href="bower_components/angular-material/themes/blue-theme.css">
+    <link rel="stylesheet" href="styles/app.css">
   </head>
-  <body>
-    <div ui-view>
+  <body layout="row" md-theme="blue" flex>
+    <div ng-controller="SidebarCtrl" layout="row">
+      <md-sidenav layout="column"
+        class="md-sidenav-left md-whiteframe-z2"
+        md-component-id="left"
+        md-is-locked-open="true">
+        <md-toolbar layout="column" >
+          <h1 class="md-toolbar-tools" layout="column" flex>
+            <a href="" ng-click="goHome()" layout="row" flex>Dockerboard</a>
+          </h1>
+        </md-toolbar>
+        <md-content flex style="overflow: auto;">
+          <div ng-repeat="section in menu.sections">
+            <button class="menu-item menu-title md-menu-item"
+              ng-click="menu.toggleSelectSection(section)"
+              md-highlight="menu.isSectionSelected(section)"
+              md-ink-ripple="#bbb">
+              {{section.name}}
+            </button>
+
+            <a class="menu-item menu-sub-item md-menu-item"
+              ng-show="menu.isSectionSelected(section)"
+              ng-repeat="page in section.pages"
+              ng-href="#{{page.url}}"
+              md-highlight="menu.isPageSelected(section, page)"
+              md-ink-ripple="#bbb">
+              <span ng-bind="page"></span>
+            </a>
+          </div>
+        </md-content>
+      </md-sidenav>
     </div>
 
     <script src="bower_components/angular/angular.js"></script>
@@ -36,7 +67,10 @@
     <!-- Dockerboard App -->
     <script src="scripts/config.js"></script>
     <script src="scripts/app.js"></script>
+    <script src="scripts/services/index.js"></script>
+    <script src="scripts/services/menu.js"></script>
     <script src="scripts/modules/site/site.js"></script>
     <script src="scripts/modules/site/routes.js"></script>
+    <script src="scripts/modules/sidebar/sidebar.js"></script>
   </body>
 </html>
