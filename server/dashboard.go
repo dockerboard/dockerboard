@@ -6,14 +6,12 @@ import (
 	"path"
 	"runtime"
 
-	"github.com/codegangsta/negroni"
-	hr "github.com/julienschmidt/httprouter"
-
-	// middlewares
-	middle "github.com/dockerboard/dockerboard/server/middleware"
+	"github.com/gohttp/app"
+	"github.com/gohttp/logger"
+	"github.com/gohttp/serve"
 )
 
-func ApiIndex(w http.ResponseWriter, r *http.Request, _ hr.Params) {
+func ApiIndex(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprint(w, "Coming soon!\n")
 }
 
@@ -22,12 +20,9 @@ func Serve() {
 	// Note config dir
 	dir := path.Join(path.Dir(filename), "../client/src")
 
-	router := hr.New()
-	router.GET("/api/v1", ApiIndex)
-
-	n := negroni.Classic()
-	n.Use(middle.Logrus())
-	n.Use(negroni.NewStatic(http.Dir(dir)))
-	n.UseHandler(router)
-	n.Run(":3333")
+	app := app.New()
+	app.Use(logger.New())
+	app.Use(serve.New(dir))
+	app.Get("/api/v1", ApiIndex)
+	app.Listen(":3333")
 }
