@@ -21,6 +21,7 @@
     "d3": "~3.4.13",
     "famous-angular": "~0.5.0",
     "lodash": "~2.4.1",
-    "metrics-graphics": "*"
+    "metrics-graphics": "*",
+    "angular-material": "~0.6.0"
   }
 }

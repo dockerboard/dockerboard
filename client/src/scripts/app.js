@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module(dockerboardApp.name, ['famous.angular', 'ui.router'])
+angular.module(dockerboardApp.name, ['famous.angular', 'ui.router', 'ngMaterial'])
   .config(['$locationProvider', '$urlRouterProvider',
 
     function ($locationProvider, $urlRouterProvider) {
