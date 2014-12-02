@@ -2,7 +2,7 @@
 (function () {
 
   angular.module('dockerboard.services')
-    .factory('Menu', ['$rootScope', function ($rootScope) {
+    .factory('Menu', ['$rootScope', '$location', function ($rootScope, $location) {
       var sections = [
         {
           name: 'Apps'
@@ -43,16 +43,18 @@
         var activated = false;
         var path = $location.path();
         sections.forEach(function(section) {
-          section.pages.forEach(function(page) {
-            if (path === page.url) {
-              self.selectSection(section);
-              self.selectPage(section, page);
-              activated = true;
-            }
-          });
+          if (section && section.pages) {
+            section.pages.forEach(function(page) {
+              if (path === page.url) {
+                self.selectSection(section);
+                self.selectPage(section, page);
+                activated = true;
+              }
+            });
+          }
         });
         if (!activated) {
-          self.selectSection(sections[3]);
+          //self.selectSection(sections[0]);
         }
       }
     }])

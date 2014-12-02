@@ -7,9 +7,34 @@
   angular.module('sidebar.component')
     .controller('SidebarCtrl', SidebarController);
 
-  SidebarController.$inject = ['$scope', 'Menu'];
-  function SidebarController($scope, Menu) {
+  SidebarController.$inject = ['$rootScope', '$scope', '$location', '$mdSidenav', '$timeout', 'Menu'];
+  function SidebarController($rootScope, $scope, $location, $mdSidenav, $timeout, Menu) {
     $scope.menu = Menu;
+
+    var mainContentArea = document.querySelector("[role='main']");
+
+    $rootScope.$on('$locationChangeSuccess', openPage);
+
+    $scope.closeMenu = function() {
+      $timeout(function() { $mdSidenav('left').close(); });
+    };
+    $scope.openMenu = function() {
+      $timeout(function() { $mdSidenav('left').open(); });
+    };
+
+    $scope.path = function() {
+      return $location.path();
+    };
+
+    $scope.goHome = function($event) {
+      $scope.menu.selectPage(null, null);
+      $location.path( '/' );
+    };
+
+    function openPage() {
+      $scope.closeMenu();
+      mainContentArea && mainContentArea.focus();
+    }
   }
 
 })();
