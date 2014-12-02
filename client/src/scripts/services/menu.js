@@ -28,7 +28,6 @@
         isSectionSelected: function(section) {
           return self.openedSection === section;
         },
-
         selectPage: function(section, page) {
           page && page.url && $location.path(page.url);
           self.currentSection = section;

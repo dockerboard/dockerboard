@@ -20,7 +20,7 @@
       <md-sidenav layout="column"
         class="md-sidenav-left md-whiteframe-z2"
         md-component-id="left"
-        md-is-locked-open="true">
+        md-is-locked-open="$media('md')">
         <md-toolbar layout="column" >
           <h1 class="md-toolbar-tools" layout="column" flex>
             <a href="" ng-click="goHome()" layout="row" flex>Dockerboard</a>
@@ -48,6 +48,19 @@
       </md-sidenav>
     </div>
 
+    <div layout-fill tabindex="-1" role="main">
+      <md-toolbar layout="column" class="md-blue-theme">
+        <div layout="row" flex>
+          <button class="menu-icon" hide-gt-sm aria-label="Toggle Menu" style="position: relative; top: -5px;">
+            <md-icon icon="img/icons/ic_menu_24px.svg"></md-icon>
+          </button>
+        </div>
+      </md-toolbar>
+
+      <md-content md-scroll-y ui-view flex class="md-padding">
+      </md-content>
+    </div>
+
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
@@ -69,8 +82,8 @@
     <script src="scripts/app.js"></script>
     <script src="scripts/services/index.js"></script>
     <script src="scripts/services/menu.js"></script>
+    <script src="scripts/modules/sidebar/sidebar.js"></script>
     <script src="scripts/modules/site/site.js"></script>
     <script src="scripts/modules/site/routes.js"></script>
-    <script src="scripts/modules/sidebar/sidebar.js"></script>
   </body>
 </html>
