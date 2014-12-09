@@ -56,8 +56,8 @@
 }
 
 
-.board md-toolbar {
-  border: 1px solid #b8b8b8;
+.board md-toolbar, .board md-content {
+  border: 1px solid #f3f3f3;
   border-radius: 3px;
 }
 
