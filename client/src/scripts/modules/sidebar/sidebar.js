@@ -1,5 +1,5 @@
-'use strict';
 (function () {
+  'use strict';
 
   // Use Applicaion configuration module to register a new module
   dockerboardApp.registerModule('sidebar.component');
@@ -7,8 +7,8 @@
   angular.module('sidebar.component')
     .controller('SidebarCtrl', SidebarController);
 
-  SidebarController.$inject = ['$rootScope', '$scope', '$location', '$mdSidenav', '$timeout', 'Menu'];
-  function SidebarController($rootScope, $scope, $location, $mdSidenav, $timeout, Menu) {
+  SidebarController.$inject = ['$scope', '$location', '$mdSidenav', '$timeout', 'Menu', '$rootScope'];
+  function SidebarController($scope, $location, $mdSidenav, $timeout, Menu, $rootScope) {
     $scope.menu = Menu;
 
     var mainContentArea = document.querySelector("[role='main']");

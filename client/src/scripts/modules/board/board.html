@@ -1,8 +1,8 @@
-<div layout="column" layout-fill class="board">
+<div layout="column" layout-fill class="board" ng-controller="BoardCtrl">
   <md-toolbar layout="column" md-theme="none" flex style="max-height: 64px;">
     <md-list role="list">
       <md-item>
-        <md-button md-theme="blue" aria-label="Add Component" title="Add Component">
+        <md-button ng-click="addNode()" md-theme="blue" aria-label="Add Component" title="Add Component">
           <md-icon icon="bower_components/material-design-icons/content/svg/production/ic_add_24px.svg" style="width: 24px; height: 24px;"></md-icon>
         </md-button>
       </md-item>
