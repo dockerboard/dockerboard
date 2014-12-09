@@ -16,8 +16,8 @@
     <link rel="stylesheet" href="styles/app.css">
   </head>
   <body layout="row" md-theme="blue" flex>
-    <div ng-controller="SidebarCtrl" layout="row">
-      <md-sidenav layout="column"
+    <div ng-controller="SidebarCtrl" layout="column">
+      <md-sidenav layout="column" layout-fill
         class="md-sidenav-left md-whiteframe-z2"
         md-component-id="left"
         md-is-locked-open="$media('md')">
@@ -49,16 +49,14 @@
       </md-sidenav>
     </div>
 
-    <div layout-fill tabindex="-1" role="main">
-      <md-toolbar layout="column" class="md-blue-theme">
-        <div layout="row" flex>
+    <div layout-fill layout="column" tabindex="-1" role="main">
+      <md-toolbar layout="column" class="md-blue-theme md-toolbar-tools" flex>
           <button class="menu-icon" hide-gt-sm aria-label="Toggle Menu" style="position: relative; top: -5px;">
             <md-icon icon="img/icons/ic_menu_24px.svg"></md-icon>
           </button>
-        </div>
       </md-toolbar>
 
-      <md-content md-scroll-y ui-view flex class="md-padding">
+      <md-content md-scroll-y class="md-padding" ui-view flex>
       </md-content>
     </div>
 
