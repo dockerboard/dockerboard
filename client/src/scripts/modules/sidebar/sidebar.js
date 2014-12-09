@@ -27,6 +27,7 @@
     };
 
     $scope.goHome = function($event) {
+      $scope.menu.selectSection(null);
       $scope.menu.selectPage(null, null);
       $location.path( '/' );
     };

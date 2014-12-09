@@ -9,6 +9,10 @@
         },
         {
           name: 'Images'
+        },
+        {
+          name: 'Board',
+          url: '/board'
         }
       ]
 

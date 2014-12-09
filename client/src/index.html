@@ -28,17 +28,18 @@
         </md-toolbar>
         <md-content flex style="overflow: auto;">
           <div ng-repeat="section in menu.sections">
-            <button class="menu-item menu-title md-menu-item"
+            <a class="menu-item menu-title md-menu-item"
               ng-click="menu.toggleSelectSection(section)"
+              ng-href="{{section.url}}"
               md-highlight="menu.isSectionSelected(section)"
               md-ink-ripple="#bbb">
               {{section.name}}
-            </button>
+            </a>
 
             <a class="menu-item menu-sub-item md-menu-item"
               ng-show="menu.isSectionSelected(section)"
               ng-repeat="page in section.pages"
-              ng-href="#{{page.url}}"
+              ng-href="{{page.url}}"
               md-highlight="menu.isPageSelected(section, page)"
               md-ink-ripple="#bbb">
               <span ng-bind="page"></span>
@@ -83,6 +84,7 @@
     <script src="scripts/services/index.js"></script>
     <script src="scripts/services/menu.js"></script>
     <script src="scripts/modules/sidebar/sidebar.js"></script>
+    <script src="scripts/modules/board/board.js"></script>
     <script src="scripts/modules/site/site.js"></script>
     <script src="scripts/modules/site/routes.js"></script>
   </body>
