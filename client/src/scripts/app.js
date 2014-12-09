@@ -7,7 +7,7 @@ angular.module(dockerboardApp.name, ['famous.angular', 'ui.router', 'ngMaterial'
       $urlRouterProvider.otherwise('/');
 
       // use the HTML5 History API
-      $locationProvider.html5Mode(true);
+      //$locationProvider.html5Mode(true);
     }
     ])
   .run(['$rootScope', function($rootScope) {

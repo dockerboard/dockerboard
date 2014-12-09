@@ -46,14 +46,22 @@
         var activated = false;
         var path = $location.path();
         sections.forEach(function(section) {
-          if (section && section.pages) {
-            section.pages.forEach(function(page) {
-              if (path === page.url) {
+          if (section) {
+            if (section.pages) {
+              section.pages.forEach(function(page) {
+                if (path === page.url) {
+                  self.selectSection(section);
+                  self.selectPage(section, page);
+                  activated = true;
+                }
+              });
+            } else if (section.url) {
+              if (path === section.url) {
                 self.selectSection(section);
-                self.selectPage(section, page);
+                self.selectPage(section, null);
                 activated = true;
               }
-            });
+            }
           }
         });
         if (!activated) {

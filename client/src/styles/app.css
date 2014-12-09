@@ -55,7 +55,6 @@
   -webkit-margin-after: 0;
 }
 
-
 .board md-toolbar, .board md-content {
   border: 1px solid #f3f3f3;
   border-radius: 3px;
@@ -63,4 +62,8 @@
 
 .board md-list {
   padding: 8px;
+}
+
+md-sidenav {
+  width: auto;
 }

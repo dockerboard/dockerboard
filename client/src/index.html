@@ -15,22 +15,31 @@
     <link rel="stylesheet" href="bower_components/angular-material/themes/blue-theme.css">
     <link rel="stylesheet" href="styles/app.css">
   </head>
-  <body layout="row" md-theme="blue" flex>
+  <body layout="row" md-theme="blue">
     <div ng-controller="SidebarCtrl" layout="column">
-      <md-sidenav layout="column" layout-fill
+    <div layout="column" flex>
+      <md-sidenav
+        layout="column"
         class="md-sidenav-left md-whiteframe-z2"
         md-component-id="left"
-        md-is-locked-open="$media('md')">
-        <md-toolbar layout="column" >
-          <h1 class="md-toolbar-tools" layout="column" flex>
-            <a href="" ng-click="goHome()" layout="row" flex>Dockerboard</a>
+        md-is-locked-open="$media('gt-sm')" flex>
+        <md-toolbar md-theme="blue">
+          <h1 class="md-toolbar-tools">
+            <a href="" ng-click="goHome()">Dockerboard</a>
           </h1>
         </md-toolbar>
-        <md-content flex style="overflow: auto;">
+        <md-content>
           <div ng-repeat="section in menu.sections">
-            <a class="menu-item menu-title md-menu-item"
+            <button class="menu-item menu-title md-menu-item"
+              ng-if="!section.url"
               ng-click="menu.toggleSelectSection(section)"
-              ng-href="{{section.url}}"
+              ng-href="#{{section.url}}"
+              md-highlight="menu.isSectionSelected(section)"
+              md-ink-ripple="#bbb">{{section.name}}</button>
+            <a class="menu-item menu-title md-menu-item"
+              ng-if="section.url"
+              ng-click="menu.toggleSelectSection(section)"
+              ng-href="#{{section.url}}"
               md-highlight="menu.isSectionSelected(section)"
               md-ink-ripple="#bbb">
               {{section.name}}
@@ -48,15 +57,16 @@
         </md-content>
       </md-sidenav>
     </div>
+    </div>
 
-    <div layout-fill layout="column" tabindex="-1" role="main">
+    <div layout="column" tabindex="-1" role="main" flex>
       <md-toolbar layout="column" class="md-blue-theme md-toolbar-tools" flex>
         <button class="menu-icon" hide-gt-sm aria-label="Toggle Menu" style="position: relative; top: -5px;">
-          <md-icon icon="img/icons/ic_menu_24px.svg"></md-icon>
+          <md-icon icon="bower_components/material-design-icons/action/svg/production/ic_view_headline_24px.svg"></md-icon>
         </button>
       </md-toolbar>
 
-      <md-content md-scroll-y class="md-padding" ui-view flex></md-content>
+      <md-content flex layout="column" class="md-padding" ui-view></md-content>
     </div>
 
     <script src="bower_components/angular/angular.js"></script>
@@ -87,3 +97,4 @@
     <script src="scripts/modules/site/routes.js"></script>
   </body>
 </html>
+
