@@ -54,3 +54,13 @@
   -webkit-margin-before: 0;
   -webkit-margin-after: 0;
 }
+
+
+.board md-toolbar {
+  border: 1px solid #b8b8b8;
+  border-radius: 3px;
+}
+
+.board md-list {
+  padding: 8px;
+}
