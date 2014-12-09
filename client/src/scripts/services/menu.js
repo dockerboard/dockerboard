@@ -5,10 +5,16 @@
     .factory('Menu', ['$rootScope', '$location', function ($rootScope, $location) {
       var sections = [
         {
-          name: 'Apps'
+          name: 'Apps',
+          url: '/apps'
         },
         {
-          name: 'Images'
+          name: 'Containers',
+          url: '/containers'
+        },
+        {
+          name: 'Images',
+          url: '/images'
         },
         {
           name: 'Board',

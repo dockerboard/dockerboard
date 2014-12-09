@@ -9,9 +9,11 @@ import (
 	"github.com/gohttp/app"
 	"github.com/gohttp/logger"
 	"github.com/gohttp/serve"
+
+	"github.com/dockerboard/dockerboard/server/controllers"
 )
 
-func ApiIndex(w http.ResponseWriter, r *http.Request) {
+func APIIndex(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprint(w, "Coming soon!\n")
 }
 
@@ -23,6 +25,9 @@ func Serve() {
 	app := app.New()
 	app.Use(logger.New())
 	app.Use(serve.New(dir))
-	app.Get("/api/v1", ApiIndex)
+	app.Get("/api/v1", APIIndex)
+	app.Get("/api/v1/containers", controllers.NewContainers().Index)
+	app.Get("/api/v1/images", controllers.NewImages().Index)
+	app.Get("/api/v1/apps", controllers.NewApps().Index)
 	app.Listen(":3333")
 }
