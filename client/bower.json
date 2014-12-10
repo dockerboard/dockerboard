@@ -23,6 +23,7 @@
     "lodash": "~2.4.1",
     "metrics-graphics": "*",
     "angular-material": "~0.6.0",
-    "material-design-icons": "~1.0.1"
+    "material-design-icons": "~1.0.1",
+    "angular-pretty-bytes": "~1.0.1"
   }
 }

@@ -1,0 +1,26 @@
+<div layout="column" layout-fill class="images" ng-controller="ImagesCtrl" flex>
+  <md-toolbar layout="column" md-theme="none" flex style="max-height: 64px;">
+    <md-list role="list">
+    </md-list>
+  </md-toolbar>
+
+  <md-content style="margin-top: 16px;">
+    <md-list>
+      <md-item ng-repeat="image in images">
+        <md-item-content>
+          <div class="md-tile-left">
+            <md-icon icon="bower_components/material-design-icons/image/svg/production/ic_photo_24px.svg" style="width: 24px; height: 24px; margin: 16px;"></md-icon>
+          </div>
+          <div class="md-tile-content">
+            <h3 title="{{ image.Id }}">ID: {{ image.Id | limitTo: 8 }}</h3>
+            <h4>Repo: {{ getRepo(image.RepoTags) }}</h4>
+            <p>Tags: {{ getTags(image.RepoTags) }} </p>
+            <p>Size: {{ image.Size | prettyBytes }}, VirtualSize: {{ image.VirtualSize | prettyBytes }}</p>
+            <p>Created: {{ image.Created + '000' | date:'yyyy-MM-dd HH:mm:ss Z' }}</p>
+          </div>
+        </md-item-content>
+      </md-item>
+    </md-list>
+  </md-content>
+</div>
+

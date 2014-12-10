@@ -59,6 +59,10 @@
   border: 1px solid #f3f3f3;
   border-radius: 3px;
 }
+.images md-toolbar, .images md-content {
+  border: 1px solid #f3f3f3;
+  border-radius: 3px;
+}
 
 .board md-list {
   padding: 8px;

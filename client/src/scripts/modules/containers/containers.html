@@ -1,0 +1,17 @@
+<div layout="column" layout-fill class="containers" ng-controller="ContainersCtrl" flex>
+  <md-content>
+    <md-list>
+      <md-item ng-repeat="container in containers">
+        <md-item-content>
+          <div class="md-tile-left">
+          </div>
+          <div class="md-tile-content">
+            <p>
+              {{container.Id}}
+            </p>
+          </div>
+        </md-item-content>
+      </md-item>
+    </md-list>
+  </md-content>
+</div>
