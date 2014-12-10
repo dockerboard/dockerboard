@@ -25,9 +25,9 @@ func Serve() {
 	app := app.New()
 	app.Use(logger.New())
 	app.Use(serve.New(dir))
-	app.Get("/api/v1", APIIndex)
-	app.Get("/api/v1/containers", controllers.NewContainers().Index)
-	app.Get("/api/v1/images", controllers.NewImages().Index)
-	app.Get("/api/v1/apps", controllers.NewApps().Index)
+	app.Get("/api", APIIndex)
+	app.Get("/api/containers", controllers.NewContainers().Index)
+	app.Get("/api/images", controllers.NewImages().Index)
+	app.Get("/api/apps", controllers.NewApps().Index)
 	app.Listen(":3333")
 }
