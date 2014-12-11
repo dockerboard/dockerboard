@@ -2,7 +2,7 @@
   'use strict';
 
   var appName = app.name = 'dockerboard';
-  app.dependencies = ['ngResource', 'ngMaterial', 'ngAnimate', 'ui.router', 'prettyBytes'];
+  app.dependencies = ['ngResource', 'ngMaterial', 'ngAnimate', 'ui.router', 'prettyBytes', 'angular-loading-bar'];
   app.registerModule = registerModule;
 
   function registerModule(moduleName, dependencies) {

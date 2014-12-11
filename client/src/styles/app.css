@@ -79,3 +79,22 @@
 md-sidenav {
   max-width: 246px;
 }
+
+#loading-bar .bar {
+  position: absolute;
+  width: 100%;
+  background: white;
+  transform: translate3d(0px, 0px, 0px);
+}
+#loading-bar-spinner {
+  width: 100%;
+}
+#loading-bar .peg {
+  box-shadow: 0 0 10px #2c3e50, 0 0 5px #2c3e50;
+}
+#loading-bar-spinner .spinner-icon {
+  position: absolute;
+  right: 30px;
+  background: white;
+  transform: translate3d(0px, 0px, 0px);
+}

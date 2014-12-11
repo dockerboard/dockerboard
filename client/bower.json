@@ -25,6 +25,7 @@
     "metrics-graphics": "*",
     "angular-material": "~0.6.1",
     "material-design-icons": "~1.0.1",
-    "angular-pretty-bytes": "~1.0.1"
+    "angular-pretty-bytes": "~1.0.1",
+    "angular-loading-bar": "~0.6.0"
   }
 }
