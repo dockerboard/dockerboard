@@ -22,19 +22,15 @@
 
   ContainersController.$inject = ['$scope', 'Containers'];
   function ContainersController($scope, Containers) {
-    Containers
-      .index()
-      .success(function (data) {
-        $scope.containers = data;
-      });
+    Containers.query(function (data) {
+      $scope.containers = data;
+    });
   }
 
   ContainerController.$inject = ['$scope', '$stateParams', 'Containers'];
   function ContainerController($scope, $stateParams, Containers) {
-    Containers
-      .show($stateParams.id)
-      .success(function (data) {
-        $scope.container = data;
-      });
+    Containers.get({id: $stateParams.id}, function (data) {
+      $scope.container = data;
+    });
   }
 })();

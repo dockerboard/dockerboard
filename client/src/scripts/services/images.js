@@ -2,27 +2,21 @@
   'use strict';
 
   angular.module('dockerboard.services')
-    .factory('Images', ['$http', function ($http) {
-      return {
-        index: function () {
-          return $http.get('/api/images');
-        },
-        show: function (id) {
-          return $http.get('/api/images/' + id);
-        },
-        basicAttributes: [
-          'Id',
-          'Author',
-          'Comment',
-          'DockerVersion',
-          'Architecture',
-          'Os',
-          'Size',
-          'VirtualSize',
-          'Created',
-          'Parent'
-        ]
-      };
+    .factory('Images', ['$resource', function ($resource) {
+      var res = $resource('/api/images/:id');
+      res.basicAttributes = [
+        'Id',
+        'Author',
+        'Comment',
+        'DockerVersion',
+        'Architecture',
+        'Os',
+        'Size',
+        'VirtualSize',
+        'Created',
+        'Parent'
+      ];
+      return res;
     }]);
 
 })();

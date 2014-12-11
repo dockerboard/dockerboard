@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module(dockerboardApp.name, ['famous.angular', 'ui.router', 'ngMaterial', 'prettyBytes'])
+angular.module(dockerboardApp.name, dockerboardApp.dependencies)
   .config(['$locationProvider', '$urlRouterProvider', function($locationProvider, $urlRouterProvider) {
 
       // Redirect to home view when route not found

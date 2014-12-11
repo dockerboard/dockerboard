@@ -22,11 +22,9 @@
 
   ImagesController.$inject = ['$scope', 'Images'];
   function ImagesController($scope, Images) {
-    Images
-      .index()
-      .success(function (data) {
-        $scope.images = data;
-      });
+    Images.query(function (data) {
+      $scope.images = data;
+    });
 
     $scope.getRepo = function (tags) {
       var repo = '';
@@ -79,12 +77,10 @@
       }, $scope.basicAttributes);
     }
 
-    Images
-      .show($stateParams.id)
-      .success(function (data) {
-        $scope.image = data;
-        formatBasicAttributes(data);
-      });
+    Images.get({id: $stateParams.id}, function (data) {
+      formatBasicAttributes(data);
+      $scope.image = data;
+    });
 
   }
 })();
