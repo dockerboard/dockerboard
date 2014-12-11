@@ -95,6 +95,7 @@ md-sidenav {
 #loading-bar-spinner .spinner-icon {
   position: absolute;
   right: 30px;
-  background: white;
+  border-top-color: white;
+  border-left-color: white;
   transform: translate3d(0px, 0px, 0px);
 }
