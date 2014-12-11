@@ -22,14 +22,17 @@ func Serve() {
 	// Note config dir
 	dir := path.Join(path.Dir(filename), "../client/src")
 
+	containersController := controllers.NewContainers()
+	imagesController := controllers.NewImages()
+
 	app := app.New()
 	app.Use(logger.New())
 	app.Use(serve.New(dir))
 	app.Get("/api", APIIndex)
-	app.Get("/api/containers", controllers.NewContainers().Index)
-	app.Get("/api/containers/:id", controllers.NewContainers().Show)
-	app.Get("/api/images", controllers.NewImages().Index)
-	app.Get("/api/images/:id", controllers.NewImages().Show)
+	app.Get("/api/containers", containersController.Index)
+	app.Get("/api/containers/:id", containersController.Show)
+	app.Get("/api/images", imagesController.Index)
+	app.Get("/api/images/:id", imagesController.Show)
 	app.Get("/api/apps", controllers.NewApps().Index)
 	app.Listen(":3333")
 }
