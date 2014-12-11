@@ -1,5 +1,5 @@
-'use strict';
 (function () {
+  'use strict';
 
   angular.module('dockerboard.services')
     .factory('Menu', ['$rootScope', '$location', function ($rootScope, $location) {
@@ -74,6 +74,6 @@
           //self.selectSection(sections[0]);
         }
       }
-    }])
+    }]);
 
 })();

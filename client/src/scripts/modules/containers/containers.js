@@ -15,9 +15,10 @@
       }
     ]);
 
-  ContainersController.$inject = ['$scope', '$http'];
-  function ContainersController($scope, $http) {
-    $http.get('/api/containers')
+  ContainersController.$inject = ['$scope', 'Containers'];
+  function ContainersController($scope, Containers) {
+    Containers
+      .index()
       .success(function (data) {
         $scope.containers = data;
       });

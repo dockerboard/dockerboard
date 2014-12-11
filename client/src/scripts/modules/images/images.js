@@ -5,19 +5,25 @@
 
   angular.module('images.ctrl')
     .controller('ImagesCtrl', ImagesController)
+    .controller('ImageCtrl', ImageController)
     .config(['$stateProvider',
       function ($stateProvider) {
         $stateProvider.
           state('images', {
             url: '/images',
             templateUrl: '/scripts/modules/images/images.html'
+          })
+          .state('imageitem', {
+            url: '/images/:id',
+            templateUrl: '/scripts/modules/images/image.html'
           });
       }
     ]);
 
-  ImagesController.$inject = ['$scope', '$http'];
-  function ImagesController($scope, $http) {
-    $http.get('/api/images')
+  ImagesController.$inject = ['$scope', 'Images'];
+  function ImagesController($scope, Images) {
+    Images
+      .index()
       .success(function (data) {
         $scope.images = data;
       });
@@ -40,4 +46,23 @@
     };
   }
 
+  ImageController.$inject = ['$scope', '$stateParams', 'Images'];
+  function ImageController($scope, $stateParams, Images) {
+    Images
+      .show($stateParams.id)
+      .success(function (data) {
+        $scope.image = data;
+      });
+
+    $scope.tabs = [
+      {
+        title: 'Normal'
+      },
+      {
+        title: 'Base'
+      }
+    ];
+
+    $scope.selectedIndex = 0;
+  }
 })();
