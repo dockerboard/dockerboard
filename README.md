@@ -6,6 +6,12 @@ Simple dashboards, visualizations, managements for your dockers.
 Lovingly created and maintained by [DockerPool][] Team.
 
 
+## Screenshots
+
+### First Demo
+
+![Dockerboard Screenshot](https://github.com/dockerboard/dockerboard/blob/master/screenshots/first-demo.gif?raw=true)
+
 ## Development
 
 Currently it's very simple.   
