@@ -50,7 +50,7 @@
 
       function onLocationChange() {
         var activated = false;
-        var path = $location.path();
+        var path = $location.$$path;
         sections.forEach(function(section) {
           if (section) {
             if (section.pages) {
@@ -62,9 +62,10 @@
                 }
               });
             } else if (section.url) {
-              if (path === section.url) {
+              var i = path.indexOf(section.url);
+              if (i > -1) {
                 self.selectSection(section);
-                self.selectPage(section, null);
+                self.selectPage(section, path.substr(section.url.length + 1) || null);
                 activated = true;
               }
             }

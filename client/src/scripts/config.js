@@ -3,8 +3,8 @@
 (function (angular, app) {
 
   var appName = app.name = 'dockerboard';
+  app.dependencies = ['ngResource', 'ngMaterial', 'ngAnimate', 'ui.router', 'prettyBytes'];
   app.registerModule = registerModule;
-  app.dependencies = ['famous.angular', 'ui.router', 'ngResource', 'ngMaterial', 'ngAnimate', 'prettyBytes'];
 
   function registerModule(moduleName, dependencies) {
     angular.module(moduleName, dependencies || []);

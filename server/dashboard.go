@@ -22,6 +22,7 @@ func Serve() {
 	// Note config dir
 	dir := path.Join(path.Dir(filename), "../client/src")
 
+	// Controllers
 	containersController := controllers.NewContainers()
 	imagesController := controllers.NewImages()
 

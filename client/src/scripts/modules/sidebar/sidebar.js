@@ -16,11 +16,11 @@
     $rootScope.$on('$locationChangeSuccess', openPage);
 
     $scope.closeMenu = function() {
-      $mdSidenav('left').close();
+      $timeout(function() { $mdSidenav('left').close(); });
     };
 
     $scope.openMenu = function() {
-      $mdSidenav('left').open();
+      $timeout(function() { $mdSidenav('left').open(); });
     };
 
     $scope.path = function() {
