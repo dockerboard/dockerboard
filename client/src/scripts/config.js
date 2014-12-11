@@ -1,6 +1,5 @@
-'use strict';
-
 (function (angular, app) {
+  'use strict';
 
   var appName = app.name = 'dockerboard';
   app.dependencies = ['ngResource', 'ngMaterial', 'ngAnimate', 'ui.router', 'prettyBytes'];
