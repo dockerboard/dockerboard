@@ -57,12 +57,12 @@
 
     <div layout="column" tabindex="-1" role="main" flex>
       <md-toolbar layout="column" ng-click="openMenu()" class="md-blue-theme md-toolbar-tools" flex>
-        <div layout="row" flex>
+        <div layout="row" layout-align="center center" flex>
           <md-button class="menu-icon" hide-gt-sm aria-label="Toggle Menu" style="position: relative; top: -5px;">
             <md-icon icon="bower_components/material-design-icons/navigation/svg/production/ic_menu_24px.svg"></md-icon>
           </md-button>
           <div style="line-height: 28px;" hide-sm ng-if="menu.currentSection.name">{{menu.currentSection.name}}</div>
-          <span layout="column" layout-align="center center" class="menu-separator-icon" ng-if="menu.currentPage" style="padding: 0 10px;">
+          <span layout="column"class="menu-separator-icon" ng-if="menu.currentPage" style="padding: 0 10px;">
             <img style="height: 16px;" src="bower_components/material-design-icons/navigation/svg/production/ic_chevron_right_24px.svg" alt="" aria-hidden="true" hide-sm>
           </span>
           <div style="line-height: 28px;" ng-bind="menu.currentPage"></div>
