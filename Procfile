@@ -1,0 +1,1 @@
+web: go run -v dockerboard.go
