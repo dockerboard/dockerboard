@@ -1,14 +1,17 @@
-<div layout="column" layout-fill class="containers" ng-controller="ContainersCtrl" flex>
-  <md-content>
+<div layout="column" layout-fill class="images" ng-controller="ContainersCtrl" flex>
+  <md-toolbar layout="column" md-theme="none" flex style="max-height: 64px;">
+    <md-list role="list">
+    </md-list>
+  </md-toolbar>
+
+  <md-content style="margin-top: 16px;">
     <md-list>
       <md-item ng-repeat="container in containers">
         <md-item-content>
           <div class="md-tile-left">
+            <md-icon icon="bower_components/material-design-icons/image/svg/production/ic_photo_24px.svg" style="width: 24px; height: 24px; margin: 16px;"></md-icon>
           </div>
           <div class="md-tile-content">
-            <p>
-              {{container.Id}}
-            </p>
           </div>
         </md-item-content>
       </md-item>

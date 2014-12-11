@@ -6,6 +6,9 @@
       return {
         index: function () {
           return $http.get('/api/containers');
+        },
+        show: function (id) {
+          return $http.get('/api/containers/' + id);
         }
       };
     }]);

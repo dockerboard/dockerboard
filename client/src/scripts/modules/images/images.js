@@ -64,7 +64,8 @@
         var v = image[k];
         if (k === 'Id' || k === 'Parent') {
           v = $filter('limitTo')(v, 8);
-          v = '<a ng-href="#/images/' + v + '" href="#/images/' + v + '">' + v + '</a>';
+          var href = '#/images/' + v;
+          v = '<a ng-href="' + href + '" href="' + href + '">' + v + '</a>';
         } else if (k === 'Size' || k === 'VirtualSize') {
           v = $filter('prettyBytes')(v);
         } else if (k === 'Created') {
