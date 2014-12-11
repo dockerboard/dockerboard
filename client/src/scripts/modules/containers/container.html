@@ -1,0 +1,12 @@
+<div layout="column" layout-fill class="images" ng-controller="ContainerCtrl" flex>
+  <md-toolbar layout="column" md-theme="none" flex style="max-height: 64px;">
+    <md-list role="list">
+    </md-list>
+  </md-toolbar>
+
+  <md-content style="margin-top: 16px;">
+    <pre><code>
+      {{ container | json: 2 }}
+    </code></pre>
+  </md-content>
+</div>
