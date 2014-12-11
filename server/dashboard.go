@@ -27,7 +27,9 @@ func Serve() {
 	app.Use(serve.New(dir))
 	app.Get("/api", APIIndex)
 	app.Get("/api/containers", controllers.NewContainers().Index)
+	app.Get("/api/containers/:id", controllers.NewContainers().Show)
 	app.Get("/api/images", controllers.NewImages().Index)
+	app.Get("/api/images/:id", controllers.NewImages().Show)
 	app.Get("/api/apps", controllers.NewApps().Index)
 	app.Listen(":3333")
 }
