@@ -9,7 +9,19 @@
         },
         show: function (id) {
           return $http.get('/api/images/' + id);
-        }
+        },
+        basicAttributes: [
+          'Id',
+          'Author',
+          'Comment',
+          'DockerVersion',
+          'Architecture',
+          'Os',
+          'Size',
+          'VirtualSize',
+          'Created',
+          'Parent'
+        ]
       };
     }]);
 

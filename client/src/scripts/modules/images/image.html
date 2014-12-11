@@ -1,0 +1,23 @@
+<div layout="column" layout-fill class="images" ng-controller="ImageCtrl" flex>
+  <md-toolbar layout="column" md-theme="none" flex style="max-height: 64px;">
+    <md-list role="list">
+    </md-list>
+  </md-toolbar>
+
+  <md-content style="margin-top: 16px;">
+    <table layout="column" style="padding: 8px; text-align: left; width: 100%; display: table;">
+      <thead>
+        <tr>
+          <th>Attribute</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="attr in basicAttributes">
+          <th>{{ attr.key }}</th>
+          <th ng-bind-html="attr.value | sanitize"></th>
+        </tr>
+      </tbody>
+    </table>
+  </md-content>
+</div>

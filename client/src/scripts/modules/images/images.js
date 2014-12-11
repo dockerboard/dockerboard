@@ -46,14 +46,8 @@
     };
   }
 
-  ImageController.$inject = ['$scope', '$stateParams', 'Images'];
-  function ImageController($scope, $stateParams, Images) {
-    Images
-      .show($stateParams.id)
-      .success(function (data) {
-        $scope.image = data;
-      });
-
+  ImageController.$inject = ['$scope', '$stateParams', '$filter', 'Images'];
+  function ImageController($scope, $stateParams, $filter, Images) {
     $scope.tabs = [
       {
         title: 'Normal'
@@ -63,6 +57,33 @@
       }
     ];
 
-    $scope.selectedIndex = 0;
+    $scope.basicAttributes = [];
+
+    function formatBasicAttributes(image) {
+      angular.forEach(Images.basicAttributes, function (k) {
+        var v = image[k];
+        if (k === 'Id' || k === 'Parent') {
+          v = $filter('limitTo')(v, 8);
+          v = '<a ng-href="#/images/' + v + '" href="#/images/' + v + '">' + v + '</a>';
+        } else if (k === 'Size' || k === 'VirtualSize') {
+          v = $filter('prettyBytes')(v);
+        } else if (k === 'Created') {
+          v = $filter('date')(v, 'yyyy-MM-dd HH:mm:ss Z');
+        }
+
+        this.push({
+          key: k,
+          value: v
+        });
+      }, $scope.basicAttributes);
+    }
+
+    Images
+      .show($stateParams.id)
+      .success(function (data) {
+        $scope.image = data;
+        formatBasicAttributes(data);
+      });
+
   }
 })();

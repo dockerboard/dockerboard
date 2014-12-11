@@ -68,6 +68,14 @@
   padding: 8px;
 }
 
+.images table {
+  line-height: 1.478;
+}
+.images table tbody tr {
+  color: #888;
+  font-size: 12px;
+}
+
 md-sidenav {
   width: auto;
 }
