@@ -13,12 +13,12 @@
           </div>
           <div class="md-tile-content">
             <h3 title="{{ container.Id }}">ID: <a ng-href="#/containers/{{ container.Id | limitTo: 8 }}">{{ container.Id | limitTo: 8 }}</a></h3>
-            <h4>Image: {{ container.Image }}</h4>
             <p>Created: {{ container.Created + '000' | date:'yyyy-MM-dd HH:mm:ss Z' }}</p>
             <p>Status: {{ container.Status }}</p>
             <p>Names: {{ container.Names.join(', ') }}</p>
             <p>Ports: {{ container.Ports.join(', ') }}</p>
             <p>Command: <span style="background: #eee;">{{ container.Command }}</span></p>
+            <p>Image: <a ng-href="#/images/{{ container.Image | formatImageId }}">{{ container.Image | formatImageId }}</a></p>
           </div>
         </md-item-content>
       </md-item>

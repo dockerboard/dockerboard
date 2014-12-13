@@ -44,8 +44,8 @@
     };
   }
 
-  ImageController.$inject = ['$scope', '$stateParams', '$filter', 'Images'];
-  function ImageController($scope, $stateParams, $filter, Images) {
+  ImageController.$inject = ['$scope', '$stateParams', 'limitToFilter', 'dateFilter', 'prettyBytesFilter', 'Images'];
+  function ImageController($scope, $stateParams, limitToFilter, dateFilter, prettyBytesFilter, Images) {
     $scope.tabs = [
       {
         title: 'Normal'
@@ -61,13 +61,13 @@
       angular.forEach(Images.basicAttributes, function (k) {
         var v = image[k];
         if (k === 'Id' || k === 'Parent') {
-          v = $filter('limitTo')(v, 8);
+          v = limitToFilter(v, 8);
           var href = '#/images/' + v;
           v = '<a ng-href="' + href + '" href="' + href + '">' + v + '</a>';
         } else if (k === 'Size' || k === 'VirtualSize') {
-          v = $filter('prettyBytes')(v);
+          v = prettyBytesFilter(v);
         } else if (k === 'Created') {
-          v = $filter('date')(v, 'yyyy-MM-dd HH:mm:ss Z');
+          v = dateFilter(v, 'yyyy-MM-dd HH:mm:ss Z');
         }
 
         this.push({
