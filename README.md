@@ -12,7 +12,7 @@ Lovingly created and maintained by [DockerPool][] Team.
 
 ### Demo
 
-![Dockerboard Screenshot](https://github.com/dockerboard/dockerboard/blob/master/screenshots/2-demo.gif?raw=true)
+![Dockerboard Screenshot](https://github.com/dockerboard/dockerboard/blob/master/screenshots/1-demo.gif?raw=true)
 
 ## Development
 
