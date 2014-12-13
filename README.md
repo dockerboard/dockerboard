@@ -1,6 +1,8 @@
 
 # Dockerboard
 
+**Work-In-Process**
+
 Simple dashboards, visualizations, managements for your dockers.
 
 Lovingly created and maintained by [DockerPool][] Team.
@@ -8,9 +10,9 @@ Lovingly created and maintained by [DockerPool][] Team.
 
 ## Screenshots
 
-### First Demo
+### Demo
 
-![Dockerboard Screenshot](https://github.com/dockerboard/dockerboard/blob/master/screenshots/first-demo.gif?raw=true)
+![Dockerboard Screenshot](https://github.com/dockerboard/dockerboard/blob/master/screenshots/2-demo.gif?raw=true)
 
 ## Development
 
