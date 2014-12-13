@@ -3,7 +3,14 @@
 
   angular.module('dockerboard.services')
     .factory('Containers', ['$resource', function ($resource) {
-      return $resource('/api/containers/:id');
+      var res = $resource('/api/containers/:id');
+      res.basicAttributes = [
+        'Id',
+        'Name',
+        'Created',
+        'Image'
+      ];
+      return res;
     }]);
 
 })();

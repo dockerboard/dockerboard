@@ -5,8 +5,19 @@
   </md-toolbar>
 
   <md-content style="margin-top: 16px;">
-    <pre><code>
-      {{ container | json: 2 }}
-    </code></pre>
+    <table layout="column" style="padding: 8px; text-align: left; width: 100%; display: table;">
+      <thead>
+        <tr>
+          <th>Attribute</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="attr in basicAttributes">
+          <th>{{ attr.key }}</th>
+          <th ng-bind-html="attr.value | sanitize"></th>
+        </tr>
+      </tbody>
+    </table>
   </md-content>
 </div>
