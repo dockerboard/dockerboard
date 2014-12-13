@@ -42,24 +42,23 @@ func NewApps() *AppsController {
 }
 
 func GetTLSConfig(path string, insecure bool) (t *tls.Config, err error) {
-	certPool := x509.NewCertPool()
+	t = &tls.Config{}
 	if !insecure {
 		var file []byte
 		file, err = ioutil.ReadFile(path + "/ca.pem")
 		if err != nil {
 			return
 		}
+		certPool := x509.NewCertPool()
 		certPool.AppendCertsFromPEM(file)
+		t.RootCAs = certPool
 	}
 	cert, err := tls.LoadX509KeyPair(path+"/cert.pem", path+"/key.pem")
 	if err != nil {
 		return
 	}
-	t = &tls.Config{
-		RootCAs:            certPool,
-		Certificates:       []tls.Certificate{cert},
-		InsecureSkipVerify: insecure,
-	}
+	t.Certificates = []tls.Certificate{cert}
+	t.InsecureSkipVerify = insecure
 	return
 }
 
@@ -81,8 +80,7 @@ func init() {
 		if certPath != "" {
 			u.Scheme = "https"
 			dockerOptions.CertPath = certPath
-			TLSClientConfig, _ := GetTLSConfig(certPath, tlsVerify == "1")
-			if TLSClientConfig != nil {
+			if TLSClientConfig, err := GetTLSConfig(certPath, tlsVerify == "1"); err == nil {
 				dockerOptions.TLSClientConfig = TLSClientConfig
 			}
 		}
