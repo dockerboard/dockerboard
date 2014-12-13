@@ -18,7 +18,7 @@
             <p>Names: {{ container.Names.join(', ') }}</p>
             <p>Ports: {{ container.Ports.join(', ') }}</p>
             <p>Command: <span style="background: #eee;">{{ container.Command }}</span></p>
-            <p>Image: <a ng-href="#/images/{{ container.Image | formatImageId }}">{{ container.Image | formatImageId }}</a></p>
+            <p>Image: <a ng-init="container.Image = container.Image | formatImageId" ng-href="#/images/{{ container.Image }}">{{ container.Image }}</a></p>
           </div>
         </md-item-content>
       </md-item>
