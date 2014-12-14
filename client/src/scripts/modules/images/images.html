@@ -12,7 +12,7 @@
             <md-icon icon="bower_components/material-design-icons/image/svg/production/ic_photo_24px.svg" style="width: 24px; height: 24px; margin: 16px;"></md-icon>
           </div>
           <div class="md-tile-content">
-            <h3 title="{{ image.Id }}">ID: <a ng-href="#/images/{{ image.Id | limitTo: 8 }}">{{ image.Id | limitTo: 8 }}</a></h3>
+            <h3 ng-init="image.Id = (image.Id | limitTo: 12)" title="{{ image.Id }}">ID: <a ng-href="#/images/{{ image.Id }}">{{ image.Id }}</a></h3>
             <h4>Repo: {{ getRepo(image.RepoTags) }}</h4>
             <p>Tags: {{ getTags(image.RepoTags) }} </p>
             <p>Size: {{ image.Size | prettyBytes }}</p>

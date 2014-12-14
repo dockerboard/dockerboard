@@ -61,7 +61,7 @@
       angular.forEach(Images.basicAttributes, function (k) {
         var v = image[k];
         if (k === 'Id' || k === 'Parent') {
-          v = limitToFilter(v, 8);
+          v = limitToFilter(v, 12);
           var href = '#/images/' + v;
           v = '<a ng-href="' + href + '" href="' + href + '">' + v + '</a>';
         } else if (k === 'Size' || k === 'VirtualSize') {

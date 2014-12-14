@@ -16,7 +16,7 @@
         if (reg.test(image)) {
           return image;
         }
-        return limitToFilter(image, 8);
+        return limitToFilter(image, 12);
       }
       return formatImageId;
     }]);

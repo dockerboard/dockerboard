@@ -40,7 +40,7 @@
       angular.forEach(Containers.basicAttributes, function (k) {
         var v = container[k];
         if (k === 'Id' || k === 'Image') {
-          v = limitToFilter(v, 8);
+          v = limitToFilter(v, 12);
           var href = '#/';
           href += (k === 'Id' ? 'containers/' : 'images/') + v;
           v = '<a ng-href="' + href + '" href="' + href + '">' + v + '</a>';
