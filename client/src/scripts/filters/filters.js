@@ -11,14 +11,16 @@
     }])
 
     .filter('formatImageId', ['limitToFilter', function (limitToFilter) {
-      var reg = /[\-_:.]/g;
-      function formatImageId(image) {
-        if (reg.test(image)) {
-          return image;
-        }
-        return limitToFilter(image, 12);
-      }
+      var reg = /[\-\:\._]/;
+
       return formatImageId;
+
+      function formatImageId(id) {
+        if (reg.exec(id)) {
+          return id;
+        }
+        return limitToFilter(id, 12);
+      }
     }]);
 
 })();
