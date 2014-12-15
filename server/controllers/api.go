@@ -20,7 +20,7 @@ const UNIX_SOCKET = "unix:///var/run/docker.sock"
 
 var dockerOptions = &DockerOptions{}
 
-func NewRequest(method quest.Method, endpoint string) (q *quest.Requester, err error) {
+func NewRequest(method, endpoint string) (q *quest.Requester, err error) {
 	q, err = quest.Request(method, dockerOptions.Url.String()+endpoint)
 	if err != nil {
 		return

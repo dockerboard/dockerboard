@@ -4,14 +4,12 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-
-	"github.com/go-libs/quest"
 )
 
 type ImagesController struct{}
 
 func (ic *ImagesController) Index(w http.ResponseWriter, r *http.Request) {
-	q, err := NewRequest(quest.GET, "/images/json")
+	q, err := NewRequest("GET", "/images/json")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
@@ -27,7 +25,7 @@ func (ic *ImagesController) Index(w http.ResponseWriter, r *http.Request) {
 
 func (ic *ImagesController) Show(w http.ResponseWriter, r *http.Request) {
 	endpoint := fmt.Sprintf("/images/%s/json", r.URL.Query().Get(":id"))
-	q, err := NewRequest(quest.GET, endpoint)
+	q, err := NewRequest("GET", endpoint)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return

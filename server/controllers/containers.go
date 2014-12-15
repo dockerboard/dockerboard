@@ -4,14 +4,12 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-
-	"github.com/go-libs/quest"
 )
 
 type ContainersController struct{}
 
 func (cc *ContainersController) Index(w http.ResponseWriter, r *http.Request) {
-	q, err := NewRequest(quest.GET, "/containers/json")
+	q, err := NewRequest("GET", "/containers/json")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
@@ -27,7 +25,7 @@ func (cc *ContainersController) Index(w http.ResponseWriter, r *http.Request) {
 
 func (cc *ContainersController) Show(w http.ResponseWriter, r *http.Request) {
 	endpoint := fmt.Sprintf("/containers/%s/json", r.URL.Query().Get(":id"))
-	q, err := NewRequest(quest.GET, endpoint)
+	q, err := NewRequest("GET", endpoint)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
