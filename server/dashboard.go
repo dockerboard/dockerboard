@@ -35,5 +35,5 @@ func Serve() {
 	app.Get("/api/images", imagesController.Index)
 	app.Get("/api/images/:id", imagesController.Show)
 	app.Get("/api/apps", controllers.NewApps().Index)
-	app.Listen(":3333")
+	app.Listen(":8001")
 }
