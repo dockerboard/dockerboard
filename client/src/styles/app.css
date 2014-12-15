@@ -68,12 +68,23 @@
   padding: 8px;
 }
 
+.images md-list {
+  padding: 8px;
+}
+
+.images md-toolbar md-list md-item {
+  border-right: 1px solid #f3f3f3;
+}
+
 .images table {
   line-height: 1.478;
 }
 .images table tbody tr {
   color: #888;
   font-size: 12px;
+}
+.images md-switch .md-switch-thumb {
+  position: relative;
 }
 
 md-sidenav {

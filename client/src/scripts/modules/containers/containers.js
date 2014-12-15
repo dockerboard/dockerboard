@@ -22,9 +22,20 @@
 
   ContainersController.$inject = ['$scope', 'Containers'];
   function ContainersController($scope, Containers) {
-    Containers.query(function (data) {
-      $scope.containers = data;
-    });
+
+    $scope.queryParams = Containers.queryParams;
+
+    $scope.fetch = function () {
+      Containers.query($scope.queryParams, function (data) {
+        $scope.containers = data;
+      });
+    };
+
+    $scope.fetch();
+
+    $scope.search = function () {
+      $scope.fetch();
+    }
   }
 
   ContainerController.$inject = ['$scope', '$stateParams', 'limitToFilter', 'dateFilter', 'Containers'];
