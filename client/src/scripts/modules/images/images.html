@@ -9,7 +9,7 @@
       <md-item ng-repeat="image in images">
         <md-item-content>
           <div class="md-tile-left">
-            <md-icon icon="bower_components/material-design-icons/image/svg/production/ic_photo_24px.svg" style="width: 24px; height: 24px; margin: 16px;"></md-icon>
+            <img src="bower_components/material-design-icons/image/svg/production/ic_photo_24px.svg" style="width: 24px; height: 24px; margin: 16px;" />
           </div>
           <div class="md-tile-content">
             <h3 ng-init="image.Id = (image.Id | limitTo: 12)" title="{{ image.Id }}">ID: <a ng-href="#/images/{{ image.Id }}">{{ image.Id }}</a></h3>

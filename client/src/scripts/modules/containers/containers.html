@@ -9,7 +9,7 @@
       <md-item ng-repeat="container in containers">
         <md-item-content>
           <div class="md-tile-left">
-            <md-icon icon="bower_components/material-design-icons/image/svg/production/ic_crop_original_24px.svg" style="width: 24px; height: 24px; margin: 16px;"></md-icon>
+            <img src="bower_components/material-design-icons/image/svg/production/ic_crop_original_24px.svg" style="width: 24px; height: 24px; margin: 16px;" />
           </div>
           <div class="md-tile-content">
             <h3 ng-init="container.Id = (container.Id | limitTo: 12)" title="{{ container.Id }}">ID: <a ng-href="#/containers/{{ container.Id }}">{{ container.Id }}</a></h3>
