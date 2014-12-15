@@ -21,10 +21,13 @@ const UNIX_SOCKET = "unix:///var/run/docker.sock"
 var dockerOptions = &DockerOptions{}
 
 func NewRequest(method, endpoint string) (q *quest.Requester, err error) {
-	q, err = quest.Request(method, dockerOptions.Url.String()+endpoint)
+	dockerOptions.Url.Path = endpoint
+	q, err = quest.Request(method, dockerOptions.Url.String())
 	if err != nil {
 		return
 	}
+	// Must Overwrite Url for unix
+	q.Url = dockerOptions.Url
 	if dockerOptions.TLSClientConfig != nil {
 		q.TLSConfig(dockerOptions.TLSClientConfig)
 	}
@@ -76,10 +79,13 @@ func init() {
 	u, err := url.Parse(host)
 	if err == nil {
 		dockerOptions.Url = u
-		if u.Scheme == "tcp" {
+		if u.Scheme == "unix" {
+			u.Host = u.Path
+			u.Path = ""
+		} else if u.Scheme == "tcp" {
 			u.Scheme = "http"
 		}
-		if certPath != "" {
+		if certPath != "" && u.Scheme != "unix" {
 			u.Scheme = "https"
 			dockerOptions.CertPath = certPath
 			if TLSClientConfig, err := GetTLSConfig(certPath, tlsVerify == "1"); err == nil {
