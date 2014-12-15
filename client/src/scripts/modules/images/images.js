@@ -22,9 +22,42 @@
 
   ImagesController.$inject = ['$scope', 'Images'];
   function ImagesController($scope, Images) {
-    Images.query(function (data) {
-      $scope.images = data;
-    });
+
+    $scope.queryParams = Images.queryParams;
+
+    $scope.queryParamsFilters = '';
+
+    $scope.fetch = function () {
+      $scope.queryParams.filters = parseFilters($scope.queryParamsFilters);
+      Images.query($scope.queryParams, function (data) {
+        $scope.images = data;
+      });
+    };
+
+    function parseFilters(text) {
+      if (!text) return '';
+      var filters = {};
+      var arr = text.split(/\s+/g);
+      for (var i = 0, l = arr.length; i < l; ++i) {
+        var f = arr[i].split('=');
+        if (f.length !== 2) {
+          continue;
+        }
+        var name = f[0];
+        var value = f[1];
+        if (name && value) {
+          filters[name] = filters[name] || [];
+          filters[name].push(value);
+        }
+      }
+      return JSON.stringify(filters);
+    }
+
+    $scope.fetch();
+
+    $scope.search = function () {
+      $scope.fetch();
+    }
 
     $scope.getRepo = function (tags) {
       var repo = '';

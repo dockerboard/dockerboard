@@ -1,7 +1,29 @@
 <div layout="column" layout-fill class="images" ng-controller="ImagesCtrl" flex>
   <md-toolbar layout="column" md-theme="none" flex style="max-height: 64px;">
-    <md-list role="list">
+    <form>
+    <md-list layout="row" role="list">
+      <md-item>
+        <md-item-content>
+          <md-switch md-theme="blue" ng-model="queryParams.all" aria-label="All">All</md-switch>
+        </md-item-content>
+      </md-item>
+      <md-item>
+        <md-item-content>
+          <div style="padding: 8px;">
+            <input id="queryParamsFilters" ng-model="queryParamsFilters" style="max-width: 123px; border: 1px solid transparent; border-bottom: 1px solid #f2f2f2;" />
+            <label for="queryParamsFilters">Filters</label>
+          </div>
+        </md-item-content>
+      </md-item>
+      <md-item style="position: absolute; right: 8px;">
+        <md-item-content>
+          <md-button aria-label="Search" ng-click="search()">
+            <img src="bower_components/material-design-icons/action/svg/production/ic_search_24px.svg" style="width: 24px; height: 24px;" />
+          </md-button>
+        </md-item-content>
+      </md-item>
     </md-list>
+    </form>
   </md-toolbar>
 
   <md-content style="margin-top: 16px;">
