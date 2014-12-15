@@ -11,7 +11,12 @@ Lovingly created and maintained by [DockerPool][] Team.
 ## Quick Start
 
 ```
-git clone github.com/dockerboard/dockerboard && cd dockerboard
+git clone github.com/dockerboard/dockerboard
+cd dockerboard
+cd client/
+npm install
+bower install
+
 docker build -t dockerboard .
 docker run -d -p 8001:8001 -v /var/run/docker.sock:/var/run/docker.sock dockerboard
 open http://127.0.0.1:8001
