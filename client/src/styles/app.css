@@ -73,7 +73,11 @@
 }
 
 .images md-toolbar md-list md-item {
-  border-right: 1px solid #f3f3f3;
+  border-left: 1px dotted #f3f3f3;
+}
+.images md-toolbar md-list md-item:first-child,
+.images md-toolbar md-list md-item:last-child {
+  border-left: 1px dotted transparent;
 }
 
 .images table {
