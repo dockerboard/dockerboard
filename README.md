@@ -27,7 +27,7 @@ open http://127.0.0.1:8001
   If using [boot2docker][], these are some ENV variables.
 
 ```
-export DOCKER_HOST="tcp/0.0.0.0:2376"
+export DOCKER_HOST="tcp://0.0.0.0:2376"
 export DOCKER_CERT_PATH="$HOME/.boot2docker/certs/boot2docker-vm"
 export DOCKER_TLS_VERIFY="1"
 ```
