@@ -6,6 +6,11 @@ import (
 	"net/http"
 )
 
+type ImagesOptions struct {
+	All     string `url:"all"`
+	Filters string `url:"filters"`
+}
+
 type ImagesController struct{}
 
 func (ic *ImagesController) Index(w http.ResponseWriter, r *http.Request) {
@@ -14,6 +19,10 @@ func (ic *ImagesController) Index(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
+	q.Query(ImagesOptions{
+		All:     r.URL.Query().Get("all"),
+		Filters: r.URL.Query().Get("filters"),
+	})
 	b, err := q.Do()
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
