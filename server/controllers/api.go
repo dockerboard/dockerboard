@@ -25,7 +25,9 @@ func NewRequest(method, endpoint string) (q *quest.Requester, err error) {
 	if err != nil {
 		return
 	}
-	q.TLSConfig(dockerOptions.TLSClientConfig)
+	if dockerOptions.TLSClientConfig != nil {
+		q.TLSConfig(dockerOptions.TLSClientConfig)
+	}
 	return
 }
 
