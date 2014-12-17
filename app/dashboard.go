@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"net/http"
 	"path"
-	"runtime"
 
 	"github.com/gohttp/app"
 	"github.com/gohttp/logger"
@@ -18,9 +17,8 @@ func APIIndex(w http.ResponseWriter, r *http.Request) {
 }
 
 func Serve() {
-	_, filename, _, _ := runtime.Caller(0)
-	// Note config dir
-	dir := path.Join(path.Dir(filename), "../static")
+	// TODO @fundon, config dir or from ENV
+	dir := path.Join(path.Dir("/bluewhale/dist/"))
 
 	// Controllers
 	containersController := controllers.NewContainers()
