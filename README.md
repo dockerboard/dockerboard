@@ -1,11 +1,15 @@
 
 # Dockerboard
 
-**Work-In-Process**
+    **Work-In-Process**
 
-Simple dashboards, visualizations, managements for your dockers.
+    Simple dashboards, visualizations, managements for your dockers.
 
-Lovingly created and maintained by [DockerPool][] Team.
+    This is a APIs service.
+
+    [Dockerboard][] and [Bluwhale][] are working together to make to the Docker awesome.
+
+    Lovingly created and maintained by [DockerPool][] Team.
 
 
 ## Quick Start
@@ -41,28 +45,10 @@ export DOCKER_TLS_VERIFY="1"
 
 ## Development
 
-Currently it's very simple.   
-
-
-### Install npm & bower packages
-
 ```
-cd client/
-npm install
-bower install
-
-cd ../
 go get ./..
 go run dockerboard.go
 ```
-
-
-## Build With
-
-- [gohttp](https://github.com/gohttp) &mdash; Our back end API is gohttp app. It responds to requests RESTfully in JSON.
-- [Angular.js](https://www.angularjs.org/) &mdash; Our front end is an Angular.js app that communicates with the negroni API.
-- [D3.js](http://d3js.org/) &mdash; We use D3.js for drawing, bring data.
-
 
 [DockerPool]: http://dockerpool.com/
 [boot2docker]: http://boot2docker.io/
