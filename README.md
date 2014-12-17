@@ -8,21 +8,17 @@ Simple dashboards, visualizations, managements for your dockers.
 This is a APIs service.
 
 [Dockerboard][] and [Bluewhale][] are working together to make to the Docker awesome.
-
 Lovingly created and maintained by [DockerPool][] Team.
 
+[![badge](http://dockeri.co/image/dockerboard/dockerboard)](https://registry.hub.docker.com/u/dockerboard/dockerboard/)
 
 ## Quick Start
 
 ```
-git clone github.com/dockerboard/dockerboard
-cd dockerboard
-cd client/
-npm install
-bower install
-
-docker build -t dockerboard .
-docker run -d -p 8001:8001 -v /var/run/docker.sock:/var/run/docker.sock dockerboard
+docker build -t dockerboard/bluewhale github.com/dockerboard/bluewhale
+docker build -t dockerboard/dockerboard github.com/dockerboard/dockerboard
+docker run -d -v /bluewhale/dist --name bluewhale dockerboard/bluewhale
+docker run -d -p 8001:8001 -v /var/run/docker.sock:/var/run/docker.sock --volumes-from bluewhale --name dockerboard  dockerboard/dockerboard
 open http://127.0.0.1:8001
 ```
 
