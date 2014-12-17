@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/dockerboard/dockerboard/server"
+	"github.com/dockerboard/dockerboard/app"
 )
 
 func main() {
