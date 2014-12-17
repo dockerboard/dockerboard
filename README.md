@@ -1,15 +1,15 @@
 
 # Dockerboard
 
-    **Work-In-Process**
+**Work-In-Process**
 
-    Simple dashboards, visualizations, managements for your dockers.
+Simple dashboards, visualizations, managements for your dockers.
 
-    This is a APIs service.
+This is a APIs service.
 
-    [Dockerboard][] and [Bluwhale][] are working together to make to the Docker awesome.
+[Dockerboard][] and [Bluwhale][] are working together to make to the Docker awesome.
 
-    Lovingly created and maintained by [DockerPool][] Team.
+Lovingly created and maintained by [DockerPool][] Team.
 
 
 ## Quick Start
