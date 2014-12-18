@@ -22,12 +22,13 @@ func (cc *ContainersController) Index(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
+	params := r.URL.Query()
 	q.Query(ContainersOptions{
-		All:    r.URL.Query().Get("all"),
-		Limit:  r.URL.Query().Get("limit"),
-		Size:   r.URL.Query().Get("size"),
-		Since:  r.URL.Query().Get("since"),
-		Before: r.URL.Query().Get("before"),
+		All:    params.Get("all"),
+		Limit:  params.Get("limit"),
+		Size:   params.Get("size"),
+		Since:  params.Get("since"),
+		Before: params.Get("before"),
 	})
 	b, err := q.Do()
 	if err != nil {

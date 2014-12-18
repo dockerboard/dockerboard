@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"net/url"
 )
 
 type ImagesOptions struct {
@@ -19,9 +20,10 @@ func (ic *ImagesController) Index(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
+	params := r.URL.Query()
 	q.Query(ImagesOptions{
-		All:     r.URL.Query().Get("all"),
-		Filters: r.URL.Query().Get("filters"),
+		All:     params.Get("all"),
+		Filters: params.Get("filters"),
 	})
 	b, err := q.Do()
 	if err != nil {
@@ -33,7 +35,8 @@ func (ic *ImagesController) Index(w http.ResponseWriter, r *http.Request) {
 }
 
 func (ic *ImagesController) Show(w http.ResponseWriter, r *http.Request) {
-	endpoint := fmt.Sprintf("/images/%s/json", r.URL.Query().Get(":id"))
+	id, _ := url.QueryUnescape(r.URL.Query().Get(":id"))
+	endpoint := fmt.Sprintf("/images/%s/json", id)
 	q, err := NewRequest("GET", endpoint)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
