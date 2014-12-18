@@ -34,6 +34,9 @@ func (ic *ImagesController) Index(w http.ResponseWriter, r *http.Request) {
 	io.Copy(w, b)
 }
 
+func (ic *ImagesController) Create(w http.ResponseWriter, r *http.Request) {
+}
+
 func (ic *ImagesController) Show(w http.ResponseWriter, r *http.Request) {
 	id, _ := url.QueryUnescape(r.URL.Query().Get(":id"))
 	endpoint := fmt.Sprintf("/images/%s/json", id)

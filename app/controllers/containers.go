@@ -39,6 +39,9 @@ func (cc *ContainersController) Index(w http.ResponseWriter, r *http.Request) {
 	io.Copy(w, b)
 }
 
+func (cc *ContainersController) Create(w http.ResponseWriter, r *http.Request) {
+}
+
 func (cc *ContainersController) Show(w http.ResponseWriter, r *http.Request) {
 	endpoint := fmt.Sprintf("/containers/%s/json", r.URL.Query().Get(":id"))
 	q, err := NewRequest("GET", endpoint)
@@ -53,4 +56,7 @@ func (cc *ContainersController) Show(w http.ResponseWriter, r *http.Request) {
 	}
 	w.Header().Set("Content-Type", "application/json;charset=utf-8")
 	io.Copy(w, b)
+}
+
+func (cc *ContainersController) Destroy(w http.ResponseWriter, r *http.Request) {
 }
