@@ -50,3 +50,14 @@ func (ic *ImagesController) Show(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json;charset=utf-8")
 	io.Copy(w, b)
 }
+
+func (ic *ImagesController) Destroy(w http.ResponseWriter, r *http.Request) {
+	endpoint := fmt.Sprintf("/images/%s", r.URL.Query().Get(":id"))
+	q, err := NewRequest("DELETE", endpoint)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	b, err := q.Do()
+	io.Copy(w, b)
+}

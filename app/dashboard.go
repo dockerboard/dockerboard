@@ -10,6 +10,7 @@ import (
 	"github.com/gohttp/serve"
 
 	"github.com/dockerboard/dockerboard/app/controllers"
+	"github.com/goocean/methodoverride"
 )
 
 func APIIndex(w http.ResponseWriter, r *http.Request) {
@@ -27,11 +28,13 @@ func Serve() {
 	app := app.New()
 	app.Use(logger.New())
 	app.Use(serve.New(dir))
+	app.Use(methodoverride.New())
 	app.Get("/api", APIIndex)
 	app.Get("/api/containers", containersController.Index)
 	app.Get("/api/containers/:id", containersController.Show)
 	app.Get("/api/images", imagesController.Index)
 	app.Get("/api/images/:id", imagesController.Show)
+	app.Del("/api/images/:id", imagesController.Destroy)
 	app.Get("/api/apps", controllers.NewApps().Index)
 	app.Listen(":8001")
 }
