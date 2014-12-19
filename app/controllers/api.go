@@ -38,8 +38,16 @@ func NewContainers() *ContainersController {
 	return &ContainersController{}
 }
 
+func NewContainerActions() *ContainerActionsController {
+	return &ContainerActionsController{}
+}
+
 func NewImages() *ImagesController {
 	return &ImagesController{}
+}
+
+func NewImageActions() *ImageActionsController {
+	return &ImageActionsController{}
 }
 
 func NewApps() *AppsController {
