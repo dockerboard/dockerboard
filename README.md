@@ -35,9 +35,7 @@ export DOCKER_TLS_VERIFY="1"
 
 ## Screenshots
 
-### Demo
-
-![Dockerboard Screenshot](https://github.com/dockerboard/dockerboard/blob/master/screenshots/2-demo.gif?raw=true)
+![Dockerboard Screenshot](https://github.com/dockerboard/bluewhale/blob/master/screenshots/dockerboard.gif?raw=true)
 
 ## Development
 
