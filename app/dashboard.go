@@ -29,7 +29,7 @@ func Serve() {
 	containersController := controllers.NewContainers()
 	containerActionsController := controllers.NewContainerActions()
 	imagesController := controllers.NewImages()
-	//imageActionsController := controllers.NewImageActions()
+	imageActionsController := controllers.NewImageActions()
 
 	app := app.New()
 	app.Use(logger.New())
@@ -51,6 +51,7 @@ func Serve() {
 	app.Post("/api/images", imagesController.Create)
 	app.Get("/api/images/:id", imagesController.Show)
 	app.Del("/api/images/:id", imagesController.Destroy)
+	app.Get("/api/images/:id/history", imageActionsController.History)
 	app.Get("/api/apps", controllers.NewApps().Index)
 
 	app.Listen(":8001")
