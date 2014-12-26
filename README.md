@@ -29,7 +29,7 @@ docker run -d -p 8001:8001 -v /var/run/docker.sock:/var/run/docker.sock --name d
 open http://127.0.0.1:8001
 ```
 
-Or Buitl with [Bluewhale][]
+Or Built with [Bluewhale][]
 
 ```
 docker build -t dockerboard/bluewhale github.com/dockerboard/bluewhale
