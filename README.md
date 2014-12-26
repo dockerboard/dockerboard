@@ -22,9 +22,21 @@ open http://127.0.0.1:8001
 ```
 
 Or Pull From [Docker Hub][]
+
 ```
 docker pull dockerboard/dockerboard
 docker run -d -p 8001:8001 -v /var/run/docker.sock:/var/run/docker.sock --name dockerboard  dockerboard/dockerboard
+open http://127.0.0.1:8001
+```
+
+Or Buitl with [Bluewhale][]
+
+```
+docker build -t dockerboard/bluewhale github.com/dockerboard/bluewhale
+docker build -t dockerboard/dockerboard github.com/dockerboard/dockerboard
+docker run -d -v /bluewhale/dist --name bluewhale dockerboard/bluewhale
+docker run -d -p 8001:8001 -v /var/run/docker.sock:/var/run/docker.sock --volumes-from bluewhale --name dockerboard  dockerboard/dockerboard
+open http://127.0.0.1:8001
 ```
 
 ### Connect vai a http/https Or a unix sock
