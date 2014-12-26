@@ -5,5 +5,5 @@ import (
 )
 
 func main() {
-	dashboard.Serve()
+	app.Serve()
 }
