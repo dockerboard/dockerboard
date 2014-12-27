@@ -50,6 +50,10 @@ func NewImageActions() *ImageActionsController {
 	return &ImageActionsController{}
 }
 
+func NewSystem() *SystemController {
+	return &SystemController{}
+}
+
 func NewApps() *AppsController {
 	return &AppsController{}
 }
