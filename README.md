@@ -1,6 +1,10 @@
 
 # Dockerboard
 
+[![GoDoc][godoc-image]][godoc-url]
+[![DockerBadge][docker-image]][docker-url]
+
+
 **Work-In-Process**
 
 Simple dashboards, visualizations, managements for your dockers.
@@ -11,7 +15,11 @@ This is a APIs service.
 
 Lovingly created and maintained by [DockerPool][] Team.
 
-[![badge](http://dockeri.co/image/dockerboard/dockerboard)](https://registry.hub.docker.com/u/dockerboard/dockerboard/)
+
+## Screenshots
+
+![Dockerboard Screenshot](https://raw.githubusercontent.com/dockerboard/bluewhale/master/screenshots/dockerboard.gif)
+
 
 ## Quick Start
 
@@ -50,10 +58,6 @@ export DOCKER_TLS_VERIFY="1"
 ```
 
 
-## Screenshots
-
-![Dockerboard Screenshot](https://github.com/dockerboard/bluewhale/blob/master/screenshots/dockerboard.gif?raw=true)
-
 ## Development
 
 ```
@@ -66,3 +70,8 @@ go run dockerboard.go
 [DockerPool]: http://dockerpool.com/
 [boot2docker]: http://boot2docker.io/
 [docker hub]: https://hub.docker.com/
+
+[godoc-image]: https://godoc.org/github.com/dockerboard/dockerboard?status.svg
+[godoc-url]: http://godoc.org/github.com/dockerboard/dockerboard
+[docker-image]: http://dockeri.co/image/dockerboard/dockerboard
+[docker-url]: https://registry.hub.docker.com/u/dockerboard/dockerboard/
