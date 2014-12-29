@@ -47,6 +47,7 @@ func Serve() {
 	app.Post("/api/containers/:id/restart", containerActionsController.Restart)
 	app.Post("/api/containers/:id/pause", containerActionsController.Pause)
 	app.Post("/api/containers/:id/unpause", containerActionsController.UnPause)
+	app.Get("/api/containers/:id/logs", containerActionsController.Logs)
 
 	app.Get("/api/images", imagesController.Index)
 	app.Post("/api/images", imagesController.Create)
