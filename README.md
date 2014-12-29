@@ -1,6 +1,7 @@
 
 # Dockerboard
 
+[![gitter][gitter-image]][gitter-url]
 [![GoDoc][godoc-image]][godoc-url]
 [![DockerBadge][docker-image]][docker-url]
 
@@ -71,6 +72,8 @@ go run dockerboard.go
 [boot2docker]: http://boot2docker.io/
 [docker hub]: https://hub.docker.com/
 
+[gitter-image]: https://badges.gitter.im/Join%20Chat.svg
+[gitter-url]: https://gitter.im/dockerboard/dockerboard?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
 [godoc-image]: https://godoc.org/github.com/dockerboard/dockerboard?status.svg
 [godoc-url]: http://godoc.org/github.com/dockerboard/dockerboard
 [docker-image]: http://dockeri.co/image/dockerboard/dockerboard
