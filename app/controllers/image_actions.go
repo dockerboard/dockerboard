@@ -9,8 +9,9 @@ import (
 type ImageActionsController struct{}
 
 func (ia *ImageActionsController) History(w http.ResponseWriter, r *http.Request) {
-	endpoint := fmt.Sprintf("/images/%s/history", r.URL.Query().Get(":id"))
-	q, err := NewRequest("GET", endpoint)
+	params := r.URL.Query()
+	endpoint := fmt.Sprintf("/images/%s/history", params.Get(":id"))
+	q, err := NewRequest("GET", endpoint, params.Get("host"))
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return

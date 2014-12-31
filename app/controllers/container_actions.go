@@ -21,8 +21,9 @@ type logsOptions struct {
 }
 
 func (ca *ContainerActionsController) Start(w http.ResponseWriter, r *http.Request) {
-	endpoint := fmt.Sprintf("/containers/%s/start", r.URL.Query().Get(":id"))
-	q, err := NewRequest("POST", endpoint)
+	params := r.URL.Query()
+	endpoint := fmt.Sprintf("/containers/%s/start", params.Get(":id"))
+	q, err := NewRequest("POST", endpoint, params.Get("host"))
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
@@ -39,7 +40,7 @@ func (ca *ContainerActionsController) Start(w http.ResponseWriter, r *http.Reque
 func (ca *ContainerActionsController) Stop(w http.ResponseWriter, r *http.Request) {
 	params := r.URL.Query()
 	endpoint := fmt.Sprintf("/containers/%s/stop", params.Get(":id"))
-	q, err := NewRequest("POST", endpoint)
+	q, err := NewRequest("POST", endpoint, params.Get("host"))
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
@@ -59,7 +60,7 @@ func (ca *ContainerActionsController) Stop(w http.ResponseWriter, r *http.Reques
 func (ca *ContainerActionsController) Restart(w http.ResponseWriter, r *http.Request) {
 	params := r.URL.Query()
 	endpoint := fmt.Sprintf("/containers/%s/restart", params.Get(":id"))
-	q, err := NewRequest("POST", endpoint)
+	q, err := NewRequest("POST", endpoint, params.Get("host"))
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
@@ -79,7 +80,7 @@ func (ca *ContainerActionsController) Restart(w http.ResponseWriter, r *http.Req
 func (ca *ContainerActionsController) Pause(w http.ResponseWriter, r *http.Request) {
 	params := r.URL.Query()
 	endpoint := fmt.Sprintf("/containers/%s/pause", params.Get(":id"))
-	q, err := NewRequest("POST", endpoint)
+	q, err := NewRequest("POST", endpoint, params.Get("hosts"))
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
@@ -96,7 +97,7 @@ func (ca *ContainerActionsController) Pause(w http.ResponseWriter, r *http.Reque
 func (ca *ContainerActionsController) UnPause(w http.ResponseWriter, r *http.Request) {
 	params := r.URL.Query()
 	endpoint := fmt.Sprintf("/containers/%s/unpause", params.Get(":id"))
-	q, err := NewRequest("POST", endpoint)
+	q, err := NewRequest("POST", endpoint, params.Get("host"))
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
@@ -113,7 +114,7 @@ func (ca *ContainerActionsController) UnPause(w http.ResponseWriter, r *http.Req
 func (ca *ContainerActionsController) Logs(w http.ResponseWriter, r *http.Request) {
 	params := r.URL.Query()
 	endpoint := fmt.Sprintf("/containers/%s/logs", params.Get(":id"))
-	q, err := NewRequest("GET", endpoint)
+	q, err := NewRequest("GET", endpoint, params.Get("host"))
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return

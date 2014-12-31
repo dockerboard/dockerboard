@@ -31,6 +31,7 @@ func Serve() {
 	imagesController := controllers.NewImages()
 	imageActionsController := controllers.NewImageActions()
 	systemController := controllers.NewSystem()
+	hostsController := controllers.NewHosts()
 
 	app := app.New()
 	app.Use(logger.New())
@@ -56,6 +57,11 @@ func Serve() {
 	app.Get("/api/images/:id/history", imageActionsController.History)
 
 	app.Get("/api/system", systemController.Info)
+
+	app.Get("/api/hosts", hostsController.Index)
+	app.Post("/api/hosts", hostsController.Create)
+	app.Del("/api/hosts/:id", hostsController.Destroy)
+	//app.Del("/api/hosts/ping", hostActionsController.Destroy)
 
 	app.Get("/api/apps", controllers.NewApps().Index)
 

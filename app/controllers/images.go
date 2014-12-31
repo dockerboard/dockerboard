@@ -20,12 +20,12 @@ type ImagesDestoryOptions struct {
 type ImagesController struct{}
 
 func (ic *ImagesController) Index(w http.ResponseWriter, r *http.Request) {
-	q, err := NewRequest("GET", "/images/json")
+	params := r.URL.Query()
+	q, err := NewRequest("GET", "/images/json", params.Get("host"))
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	params := r.URL.Query()
 	q.Query(ImagesIndexOptions{
 		All:     params.Get("all"),
 		Filters: params.Get("filters"),
@@ -41,8 +41,9 @@ func (ic *ImagesController) Index(w http.ResponseWriter, r *http.Request) {
 }
 
 func (ic *ImagesController) Create(w http.ResponseWriter, r *http.Request) {
+	params := r.URL.Query()
 	endpoint := fmt.Sprintf("/images/create")
-	q, err := NewRequest("POST", endpoint)
+	q, err := NewRequest("POST", endpoint, params.Get("host"))
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
@@ -64,9 +65,10 @@ func (ic *ImagesController) Create(w http.ResponseWriter, r *http.Request) {
 }
 
 func (ic *ImagesController) Show(w http.ResponseWriter, r *http.Request) {
-	id, _ := url.QueryUnescape(r.URL.Query().Get(":id"))
+	params := r.URL.Query()
+	id, _ := url.QueryUnescape(params.Get(":id"))
 	endpoint := fmt.Sprintf("/images/%s/json", id)
-	q, err := NewRequest("GET", endpoint)
+	q, err := NewRequest("GET", endpoint, params.Get("host"))
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
@@ -82,13 +84,13 @@ func (ic *ImagesController) Show(w http.ResponseWriter, r *http.Request) {
 }
 
 func (ic *ImagesController) Destroy(w http.ResponseWriter, r *http.Request) {
-	endpoint := fmt.Sprintf("/images/%s", r.URL.Query().Get(":id"))
-	q, err := NewRequest("DELETE", endpoint)
+	params := r.URL.Query()
+	endpoint := fmt.Sprintf("/images/%s", params.Get(":id"))
+	q, err := NewRequest("DELETE", endpoint, params.Get("host"))
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	params := r.URL.Query()
 	q.Query(ImagesDestoryOptions{
 		Force:   params.Get("force"),
 		NoPrune: params.Get("noprune"),

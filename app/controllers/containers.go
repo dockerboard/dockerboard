@@ -22,12 +22,12 @@ type ContainersDestoryOptions struct {
 type ContainersController struct{}
 
 func (cc *ContainersController) Index(w http.ResponseWriter, r *http.Request) {
-	q, err := NewRequest("GET", "/containers/json")
+	params := r.URL.Query()
+	q, err := NewRequest("GET", "/containers/json", params.Get("host"))
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	params := r.URL.Query()
 	q.Query(ContainersIndexOptions{
 		All:    params.Get("all"),
 		Limit:  params.Get("limit"),
@@ -48,8 +48,9 @@ func (cc *ContainersController) Create(w http.ResponseWriter, r *http.Request) {
 }
 
 func (cc *ContainersController) Show(w http.ResponseWriter, r *http.Request) {
-	endpoint := fmt.Sprintf("/containers/%s/json", r.URL.Query().Get(":id"))
-	q, err := NewRequest("GET", endpoint)
+	params := r.URL.Query()
+	endpoint := fmt.Sprintf("/containers/%s/json", params.Get(":id"))
+	q, err := NewRequest("GET", endpoint, params.Get("host"))
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
@@ -65,13 +66,13 @@ func (cc *ContainersController) Show(w http.ResponseWriter, r *http.Request) {
 }
 
 func (cc *ContainersController) Destroy(w http.ResponseWriter, r *http.Request) {
-	endpoint := fmt.Sprintf("/containers/%s", r.URL.Query().Get(":id"))
-	q, err := NewRequest("DELETE", endpoint)
+	params := r.URL.Query()
+	endpoint := fmt.Sprintf("/containers/%s", params.Get(":id"))
+	q, err := NewRequest("DELETE", endpoint, params.Get("host"))
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	params := r.URL.Query()
 	q.Query(ContainersDestoryOptions{
 		Force: params.Get("force"),
 		V:     params.Get("v"),

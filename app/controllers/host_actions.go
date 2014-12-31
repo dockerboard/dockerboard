@@ -5,21 +5,21 @@ import (
 	"net/http"
 )
 
-type SystemController struct{}
+type HostActionsController struct{}
 
-func (s *SystemController) Info(w http.ResponseWriter, r *http.Request) {
+func (ha *HostActionsController) Ping(w http.ResponseWriter, r *http.Request) {
 	params := r.URL.Query()
-	endpoint := "/info"
-	q, err := NewRequest("GET", endpoint, params.Get("host"))
+	q, err := NewRequest("GET", "/_ping", params.Get("host"))
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 	b, err := q.Do()
-	if !q.ValidateStatusCode(204, 500) && err != nil {
+	if !q.ValidateStatusCode(200, 500) && err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 	w.WriteHeader(q.StatusCode)
+	w.Header().Set("Content-Type", "application/json;charset=utf-8")
 	io.Copy(w, b)
 }
