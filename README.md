@@ -21,6 +21,11 @@ Lovingly created and maintained by [DockerPool][] Team.
 ![Dockerboard Screenshot](https://raw.githubusercontent.com/dockerboard/bluewhale/master/screenshots/dockerboard.gif)
 
 
+## Features
+
+* Multi Hosts, switch, add, delete
+
+
 ## Quick Start
 
 ```
