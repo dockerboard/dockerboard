@@ -18,6 +18,8 @@ Lovingly created and maintained by [DockerPool][] Team.
 
 ## Screenshots
 
+![Dockerboard Hosts Screenshot](https://raw.githubusercontent.com/dockerboard/bluewhale/master/screenshots/hosts.gif)
+
 ![Dockerboard Screenshot](https://raw.githubusercontent.com/dockerboard/bluewhale/master/screenshots/dockerboard.gif)
 
 
