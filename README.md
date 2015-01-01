@@ -54,7 +54,7 @@ docker run -d -p 8001:8001 -v /var/run/docker.sock:/var/run/docker.sock --volume
 open http://127.0.0.1:8001
 ```
 
-### Connect vai a http/https Or a unix sock
+### Connect via a http/https Or a unix sock
 
   If using [boot2docker][], these are some ENV variables.
 
