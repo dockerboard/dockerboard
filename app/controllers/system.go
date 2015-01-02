@@ -5,8 +5,11 @@ import (
 	"net/http"
 )
 
+// System Controller.
 type SystemController struct{}
 
+// Display system-wide information.
+// GET /info
 func (s *SystemController) Info(w http.ResponseWriter, r *http.Request) {
 	params := r.URL.Query()
 	endpoint := "/info"

@@ -5,8 +5,11 @@ import (
 	"net/http"
 )
 
+// Host Actions Controller.
 type HostActionsController struct{}
 
+// Ping the docker server.
+// GET /hosts/:id/ping
 func (ha *HostActionsController) Ping(w http.ResponseWriter, r *http.Request) {
 	params := r.URL.Query()
 	q, err := NewRequest("GET", "/_ping", params.Get("host"))

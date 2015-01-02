@@ -24,5 +24,3 @@ type Host struct {
 	TLSCertPath string
 	TLSConfig   *tls.Config `json:"-"`
 }
-
-type Hosts []*Host

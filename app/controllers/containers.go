@@ -6,21 +6,27 @@ import (
 	"net/http"
 )
 
+// Containers Controller.
+type ContainersController struct{}
+
+// Query Parameters for list containers.
 type ContainersIndexOptions struct {
-	All    string `url:"all"`
-	Limit  string `url:"limit"`
-	Size   string `url:"size"`
-	Since  string `url:"since"`
-	Before string `url:"before"`
+	All     string `url:"all"`
+	Limit   string `url:"limit"`
+	Size    string `url:"size"`
+	Since   string `url:"since"`
+	Before  string `url:"before"`
+	Filters string `url:"filters"`
 }
 
+// Query Parameters for remove a container.
 type ContainersDestoryOptions struct {
 	Force string `url:"force"`
 	V     string `url:"v"`
 }
 
-type ContainersController struct{}
-
+// List containers.
+// GET /containers
 func (cc *ContainersController) Index(w http.ResponseWriter, r *http.Request) {
 	params := r.URL.Query()
 	q, err := NewRequest("GET", "/containers/json", params.Get("host"))
@@ -29,14 +35,15 @@ func (cc *ContainersController) Index(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	q.Query(ContainersIndexOptions{
-		All:    params.Get("all"),
-		Limit:  params.Get("limit"),
-		Size:   params.Get("size"),
-		Since:  params.Get("since"),
-		Before: params.Get("before"),
+		All:     params.Get("all"),
+		Limit:   params.Get("limit"),
+		Size:    params.Get("size"),
+		Since:   params.Get("since"),
+		Before:  params.Get("before"),
+		Filters: params.Get("filters"),
 	})
 	b, err := q.Do()
-	if err != nil {
+	if !q.ValidateStatusCode(200, 400, 500) && err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
@@ -47,6 +54,8 @@ func (cc *ContainersController) Index(w http.ResponseWriter, r *http.Request) {
 func (cc *ContainersController) Create(w http.ResponseWriter, r *http.Request) {
 }
 
+// Inspect a container.
+// GET /containers/:id
 func (cc *ContainersController) Show(w http.ResponseWriter, r *http.Request) {
 	params := r.URL.Query()
 	endpoint := fmt.Sprintf("/containers/%s/json", params.Get(":id"))
@@ -65,6 +74,8 @@ func (cc *ContainersController) Show(w http.ResponseWriter, r *http.Request) {
 	io.Copy(w, b)
 }
 
+// Remove a container.
+// DELETE /containers/:id
 func (cc *ContainersController) Destroy(w http.ResponseWriter, r *http.Request) {
 	params := r.URL.Query()
 	endpoint := fmt.Sprintf("/containers/%s", params.Get(":id"))

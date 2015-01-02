@@ -68,6 +68,8 @@ export DOCKER_TLS_VERIFY="1"
 ## Development
 
 ```
+// Maybe you need.
+$(boot2docker shellinit)
 go get ./..
 go run dockerboard.go
 ```

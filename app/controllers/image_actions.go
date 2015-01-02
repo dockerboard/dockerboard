@@ -6,8 +6,11 @@ import (
 	"net/http"
 )
 
+// Image Actions Controller.
 type ImageActionsController struct{}
 
+// Get the history of an image.
+// GET /images/:id/history
 func (ia *ImageActionsController) History(w http.ResponseWriter, r *http.Request) {
 	params := r.URL.Query()
 	endpoint := fmt.Sprintf("/images/%s/history", params.Get(":id"))

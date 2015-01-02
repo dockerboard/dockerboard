@@ -6,12 +6,20 @@ import (
 	"net/http"
 )
 
+// Container Actions Controller
 type ContainerActionsController struct{}
 
+// Query Parameters for start/stop/restart a container.
 type stopOptions struct {
 	T string `url:"t"`
 }
 
+// Query Parameters for kill a container.
+type killOptions struct {
+	Signal string `url:"signal"`
+}
+
+// Query Parameters for get container logs.
 type logsOptions struct {
 	Follow     string `url:"follow"`
 	Stdout     string `url:"stdout"`
@@ -20,6 +28,8 @@ type logsOptions struct {
 	Tail       string `url:"tail"`
 }
 
+// Start a container.
+// POST /containers/:id/start
 func (ca *ContainerActionsController) Start(w http.ResponseWriter, r *http.Request) {
 	params := r.URL.Query()
 	endpoint := fmt.Sprintf("/containers/%s/start", params.Get(":id"))
@@ -37,6 +47,8 @@ func (ca *ContainerActionsController) Start(w http.ResponseWriter, r *http.Reque
 	io.Copy(w, b)
 }
 
+// Stop a container.
+// POST /containers/:id/stop
 func (ca *ContainerActionsController) Stop(w http.ResponseWriter, r *http.Request) {
 	params := r.URL.Query()
 	endpoint := fmt.Sprintf("/containers/%s/stop", params.Get(":id"))
@@ -57,6 +69,8 @@ func (ca *ContainerActionsController) Stop(w http.ResponseWriter, r *http.Reques
 	io.Copy(w, b)
 }
 
+// Restart a container.
+// POST /containers/:id/restart
 func (ca *ContainerActionsController) Restart(w http.ResponseWriter, r *http.Request) {
 	params := r.URL.Query()
 	endpoint := fmt.Sprintf("/containers/%s/restart", params.Get(":id"))
@@ -77,6 +91,8 @@ func (ca *ContainerActionsController) Restart(w http.ResponseWriter, r *http.Req
 	io.Copy(w, b)
 }
 
+// Pause a container.
+// POST /containers/:id/pause
 func (ca *ContainerActionsController) Pause(w http.ResponseWriter, r *http.Request) {
 	params := r.URL.Query()
 	endpoint := fmt.Sprintf("/containers/%s/pause", params.Get(":id"))
@@ -94,6 +110,8 @@ func (ca *ContainerActionsController) Pause(w http.ResponseWriter, r *http.Reque
 	io.Copy(w, b)
 }
 
+// Unpause a container.
+// POST /containers/:id/unpause
 func (ca *ContainerActionsController) UnPause(w http.ResponseWriter, r *http.Request) {
 	params := r.URL.Query()
 	endpoint := fmt.Sprintf("/containers/%s/unpause", params.Get(":id"))
@@ -111,6 +129,8 @@ func (ca *ContainerActionsController) UnPause(w http.ResponseWriter, r *http.Req
 	io.Copy(w, b)
 }
 
+// Get container logs.
+// GET /containers/:id/logs
 func (ca *ContainerActionsController) Logs(w http.ResponseWriter, r *http.Request) {
 	params := r.URL.Query()
 	endpoint := fmt.Sprintf("/containers/%s/logs", params.Get(":id"))
@@ -133,5 +153,27 @@ func (ca *ContainerActionsController) Logs(w http.ResponseWriter, r *http.Reques
 	}
 	w.WriteHeader(q.StatusCode)
 	w.Header().Set("Content-Type", "text/plain;charset=utf-8")
+	io.Copy(w, b)
+}
+
+// Kill a container.
+// POST /containers/:id/kill
+func (ca *ContainerActionsController) Kill(w http.ResponseWriter, r *http.Request) {
+	params := r.URL.Query()
+	endpoint := fmt.Sprintf("/containers/%s/kill", params.Get(":id"))
+	q, err := NewRequest("POST", endpoint, params.Get("host"))
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	q.Query(killOptions{
+		Signal: params.Get("signal"),
+	})
+	b, err := q.Do()
+	if !q.ValidateStatusCode(204, 404, 500) && err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	w.WriteHeader(q.StatusCode)
 	io.Copy(w, b)
 }
