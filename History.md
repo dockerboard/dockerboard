@@ -1,4 +1,11 @@
 
+0.3.0 / 2015-01-02
+==================
+
+  * kill container
+  * filter containers
+  * add comments
+
 0.2.0 / 2014-12-31
 ==================
 
