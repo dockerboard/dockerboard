@@ -67,6 +67,8 @@ export DOCKER_TLS_VERIFY="1"
 
 ## Development
 
+Dockerboard RESTful API Prefix: `http://localhost:8001/api`.
+
 ```
 // Maybe you need.
 $(boot2docker shellinit)
