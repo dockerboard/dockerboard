@@ -21,7 +21,7 @@ func APIIndex(w http.ResponseWriter, r *http.Request) {
 // Start Dockerboard application.
 func Serve() {
 
-	// Set bluewhale dir form ENV BLUEWHALE_DIST or /bluewhale/dist.
+	// Set bluewhale dir from ENV BLUEWHALE_DIST or /bluewhale/dist.
 	bluewhale := os.Getenv("BLUEWHALE_DIST")
 	if bluewhale == "" {
 		bluewhale = "/bluewhale/dist/"
@@ -62,6 +62,7 @@ func Serve() {
 	app.Get("/api/images/:id", imagesController.Show)
 	app.Del("/api/images/:id", imagesController.Destroy)
 	app.Get("/api/images/:id/history", imageActionsController.History)
+	app.Post("/api/images/:id/tag", imageActionsController.Tag)
 
 	// Hosts CURD APIs etc.
 	app.Get("/api/hosts", hostsController.Index)
