@@ -5,8 +5,6 @@
 
 Simple dashboards, visualizations, managements for your dockers.
 
-This is a APIs service.
-
 [Dockerboard][] and [Bluewhale][] are working together to make to the Docker awesome.
 
 Lovingly created and maintained by [DockerPool][] Team.
