@@ -35,6 +35,7 @@ func Serve() {
 	imageActionsController := controllers.NewImageActions()
 	systemController := controllers.NewSystem()
 	hostsController := controllers.NewHosts()
+	hostActionsController := controllers.NewHostActions()
 
 	// Create app.
 	app := app.New()
@@ -68,7 +69,7 @@ func Serve() {
 	app.Get("/api/hosts", hostsController.Index)
 	app.Post("/api/hosts", hostsController.Create)
 	app.Del("/api/hosts/:id", hostsController.Destroy)
-	//app.Del("/api/hosts/:id/ping", hostActionsController.Destroy)
+	app.Get("/api/hosts/:id/ping", hostActionsController.Ping)
 
 	app.Get("/api/system", systemController.Info)
 	app.Get("/api/apps", controllers.NewApps().Index)
