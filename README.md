@@ -28,10 +28,19 @@ Lovingly created and maintained by [DockerPool][] Team.
 
 ## Quick Start
 
+### Open Brower
+
+```
+open http://127.0.0.1:8001
+# Or
+open http://$(boot2docker ip 2>/dev/null):8001 
+```
+
+### Build & Run
+
 ```
 docker build -t dockerboard/dockerboard github.com/dockerboard/dockerboard
 docker run -d -p 8001:8001 -v /var/run/docker.sock:/var/run/docker.sock --name dockerboard  dockerboard/dockerboard
-open http://127.0.0.1:8001
 ```
 
 Or Pull From [Docker Hub][]
@@ -39,7 +48,6 @@ Or Pull From [Docker Hub][]
 ```
 docker pull dockerboard/dockerboard
 docker run -d -p 8001:8001 -v /var/run/docker.sock:/var/run/docker.sock --name dockerboard  dockerboard/dockerboard
-open http://127.0.0.1:8001
 ```
 
 Or Built with [Bluewhale][]
@@ -49,7 +57,6 @@ docker build -t dockerboard/bluewhale github.com/dockerboard/bluewhale
 docker build -t dockerboard/dockerboard github.com/dockerboard/dockerboard
 docker run -d -v /bluewhale/dist --name bluewhale dockerboard/bluewhale
 docker run -d -p 8001:8001 -v /var/run/docker.sock:/var/run/docker.sock --volumes-from bluewhale --name dockerboard  dockerboard/dockerboard
-open http://127.0.0.1:8001
 ```
 
 ### Connect via a http/https Or a unix sock
