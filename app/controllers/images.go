@@ -22,6 +22,11 @@ type ImagesDestoryOptions struct {
 	NoPrune string `url:"noprune"`
 }
 
+// Query Parameters for Search images on Docker Hub.
+type ImagesSearchOptions struct {
+	Term string `url:"term"`
+}
+
 // List Images.
 // GET /images
 func (ic *ImagesController) Index(w http.ResponseWriter, r *http.Request) {
@@ -106,6 +111,29 @@ func (ic *ImagesController) Destroy(w http.ResponseWriter, r *http.Request) {
 	})
 	b, err := q.Do()
 	if !q.ValidateStatusCode(200, 404, 409, 500) && err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	w.WriteHeader(q.StatusCode)
+	io.Copy(w, b)
+}
+
+// Search images
+// GET /images/search
+// Search for an image on Docker Hub https://hub.docker.com/.
+func (ic *ImagesController) Search(w http.ResponseWriter, r *http.Request) {
+	endpoint := "/images/search"
+	q, err := NewRequest("GET", endpoint, "")
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	params := r.URL.Query()
+	q.Query(ImagesSearchOptions{
+		Term: params.Get("term"),
+	})
+	b, err := q.Do()
+	if !q.ValidateStatusCode(200, 500) && err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}

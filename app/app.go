@@ -60,6 +60,7 @@ func Serve() {
 	// Images CURD APIs etc.
 	app.Get("/api/images", imagesController.Index)
 	app.Post("/api/images", imagesController.Create)
+	app.Get("/api/images/search", imagesController.Search)
 	app.Get("/api/images/:id", imagesController.Show)
 	app.Del("/api/images/:id", imagesController.Destroy)
 	app.Get("/api/images/:id/history", imageActionsController.History)
