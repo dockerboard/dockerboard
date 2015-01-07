@@ -71,6 +71,7 @@ func Serve() {
 	app.Post("/api/hosts", hostsController.Create)
 	app.Del("/api/hosts/:id", hostsController.Destroy)
 	app.Get("/api/hosts/:id/ping", hostActionsController.Ping)
+	app.Get("/api/hosts/:id/version", hostActionsController.Version)
 
 	app.Get("/api/system", systemController.Info)
 	app.Get("/api/apps", controllers.NewApps().Index)
