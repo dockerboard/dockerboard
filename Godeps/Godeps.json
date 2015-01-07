@@ -1,0 +1,65 @@
+{
+	"ImportPath": "github.com/dockerboard/dockerboard",
+	"GoVersion": "go1.4",
+	"Deps": [
+		{
+			"ImportPath": "github.com/bmizerany/pat",
+			"Rev": "b8a35001b773c267eb260a691f4e5499a3531600"
+		},
+		{
+			"ImportPath": "github.com/dustin/go-humanize",
+			"Rev": "145fabdb1ab757076a70a886d092a3af27f66f4c"
+		},
+		{
+			"ImportPath": "github.com/go-libs/progress",
+			"Comment": "0.0.2-3-g24666f8",
+			"Rev": "24666f8877532a2924865fa7864172872c0e4c55"
+		},
+		{
+			"ImportPath": "github.com/go-libs/quest",
+			"Rev": "5503cb783cb9c2e13118bc48580c060e25496977"
+		},
+		{
+			"ImportPath": "github.com/go-libs/syncreader",
+			"Comment": "0.0.2-1-g28ec12f",
+			"Rev": "28ec12faa9552264fac348ead4f4989f974be953"
+		},
+		{
+			"ImportPath": "github.com/gohttp/app",
+			"Comment": "v0.1.0-6-g45d589b",
+			"Rev": "45d589b2ac15fc6ba8f0bfb33313bcbb4011e455"
+		},
+		{
+			"ImportPath": "github.com/gohttp/logger",
+			"Comment": "v1.0.0-2-ga232ee4",
+			"Rev": "a232ee4fdb77bf47e771e446c16729034fdbe810"
+		},
+		{
+			"ImportPath": "github.com/gohttp/response",
+			"Comment": "v1.2.0-1-g159d23d",
+			"Rev": "159d23d579078615ac559b432c0d0dc390d8ff5c"
+		},
+		{
+			"ImportPath": "github.com/gohttp/serve",
+			"Comment": "v1.0.0",
+			"Rev": "6a4d682cb995925d343f97887d7ecd73eca0048f"
+		},
+		{
+			"ImportPath": "github.com/goocean/methodoverride",
+			"Rev": "abccd8f57af883e14a3333bdcba9d2c10b59eaeb"
+		},
+		{
+			"ImportPath": "github.com/google/go-querystring/query",
+			"Rev": "d8840cbb2baa915f4836edda4750050a2c0b7aea"
+		},
+		{
+			"ImportPath": "github.com/justinas/alice",
+			"Rev": "9350a6710d2aae22dbf40f5aa811c9668924cb02"
+		},
+		{
+			"ImportPath": "github.com/segmentio/go-log",
+			"Comment": "v1.8.0-4-g9c7ea0f",
+			"Rev": "9c7ea0f744953ff5220087609a8525790dc01d8b"
+		}
+	]
+}
