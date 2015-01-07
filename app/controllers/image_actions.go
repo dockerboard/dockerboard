@@ -77,7 +77,7 @@ func (ia *ImageActionsController) Push(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	var auth = r.Header.Get("Authorization")
+	auth := r.Header.Get("Authorization")
 	if auth != "" {
 		q.Set("X-Registry-Auth", auth)
 	}

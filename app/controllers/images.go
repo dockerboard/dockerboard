@@ -11,19 +11,28 @@ import (
 type ImagesController struct{}
 
 // Query Parameters for list images.
-type ImagesIndexOptions struct {
+type indexOptions struct {
 	All     string `url:"all"`
 	Filters string `url:"filters"`
 }
 
+// Query Parameters for create an image.
+type createOptions struct {
+	FromImage string `url:"fromImage"`
+	FromSrc   string `url:"fromSrc"`
+	Repo      string `url:"repo"`
+	Tag       string `url:"tag"`
+	Registry  string `url:"registry"`
+}
+
 // Query Parameters for remove an images.
-type ImagesDestoryOptions struct {
+type destoryOptions struct {
 	Force   string `url:"force"`
 	NoPrune string `url:"noprune"`
 }
 
 // Query Parameters for Search images on Docker Hub.
-type ImagesSearchOptions struct {
+type searchOptions struct {
 	Term string `url:"term"`
 }
 
@@ -36,7 +45,7 @@ func (ic *ImagesController) Index(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	q.Query(ImagesIndexOptions{
+	q.Query(indexOptions{
 		All:     params.Get("all"),
 		Filters: params.Get("filters"),
 	})
@@ -50,6 +59,9 @@ func (ic *ImagesController) Index(w http.ResponseWriter, r *http.Request) {
 	io.Copy(w, b)
 }
 
+// Create an image
+// POST /images
+// /docker_remote_api_v1.16/#create-an-image
 func (ic *ImagesController) Create(w http.ResponseWriter, r *http.Request) {
 	params := r.URL.Query()
 	endpoint := fmt.Sprintf("/images/create")
@@ -58,19 +70,25 @@ func (ic *ImagesController) Create(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	err = r.ParseForm()
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
+	auth := r.Header.Get("Authorization")
+	if auth != "" {
+		q.Set("X-Registry-Auth", auth)
 	}
-	q.Parameters(r.PostForm)
+	q.Query(createOptions{
+		FromImage: params.Get("fromImage"),
+		FromSrc:   params.Get("fromSrc"),
+		Repo:      params.Get("repo"),
+		Tag:       params.Get("tag"),
+		Registry:  params.Get("registry"),
+	})
+	q.Timeout(0)
 	b, err := q.Do()
 	if !q.ValidateStatusCode(200, 500) && err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 	w.WriteHeader(q.StatusCode)
-	w.Header().Set("Content-Type", "application/json;charset=utf-8")
+	//w.Header().Set("Content-Type", "application/json;charset=utf-8")
 	io.Copy(w, b)
 }
 
@@ -105,7 +123,7 @@ func (ic *ImagesController) Destroy(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	q.Query(ImagesDestoryOptions{
+	q.Query(destoryOptions{
 		Force:   params.Get("force"),
 		NoPrune: params.Get("noprune"),
 	})
@@ -129,7 +147,7 @@ func (ic *ImagesController) Search(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	params := r.URL.Query()
-	q.Query(ImagesSearchOptions{
+	q.Query(searchOptions{
 		Term: params.Get("term"),
 	})
 	b, err := q.Do()
