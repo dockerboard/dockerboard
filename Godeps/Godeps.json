@@ -17,7 +17,7 @@
 		},
 		{
 			"ImportPath": "github.com/go-libs/quest",
-			"Rev": "5503cb783cb9c2e13118bc48580c060e25496977"
+			"Rev": "679f61be4805bb4f8f4be8347bd48dd8857ea0c0"
 		},
 		{
 			"ImportPath": "github.com/go-libs/syncreader",

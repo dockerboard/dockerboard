@@ -388,6 +388,8 @@ func (r *Requester) Do() (*bytes.Buffer, error) {
 
 	r.res = res
 	r.StatusCode = res.StatusCode
+	// hack, return response header
+	r.Header = res.Header
 	r.Buffer = new(bytes.Buffer)
 	dw := io.MultiWriter(r.Buffer)
 
