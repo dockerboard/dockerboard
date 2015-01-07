@@ -4,6 +4,7 @@
 
   * host docker version
   * search images on Docker Hub
+  * use godep, godep save, #15
 
 0.5.0 / 2015-01-04
 ==================
