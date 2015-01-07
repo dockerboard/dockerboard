@@ -3,6 +3,7 @@
 ==================
 
   * host docker version
+  * search images on Docker Hub
 
 0.5.0 / 2015-01-04
 ==================
