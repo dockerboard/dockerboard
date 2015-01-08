@@ -16,6 +16,8 @@ Lovingly created and maintained by [DockerPool][] Team.
 
 ## Screenshots
 
+![Dockerboard Hub Screenshot](https://raw.githubusercontent.com/dockerboard/bluewhale/master/screenshots/hub_version_ping.gif)
+
 ![Dockerboard Hosts Screenshot](https://raw.githubusercontent.com/dockerboard/bluewhale/master/screenshots/hosts.gif)
 
 ![Dockerboard Screenshot](https://raw.githubusercontent.com/dockerboard/bluewhale/master/screenshots/dockerboard.gif)
