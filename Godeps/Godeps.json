@@ -7,6 +7,11 @@
 			"Rev": "b8a35001b773c267eb260a691f4e5499a3531600"
 		},
 		{
+			"ImportPath": "github.com/docker/docker/pkg/parsers",
+			"Comment": "v1.4.1-314-gd7e668a",
+			"Rev": "d7e668ac5b3ef7af74a2fa677f29dceaf42b9b4f"
+		},
+		{
 			"ImportPath": "github.com/dustin/go-humanize",
 			"Rev": "145fabdb1ab757076a70a886d092a3af27f66f4c"
 		},
