@@ -5,6 +5,7 @@
   * host docker version
   * search images on Docker Hub
   * use godep, godep save, #15
+  * create an image from Docker Hub
 
 0.5.0 / 2015-01-04
 ==================
