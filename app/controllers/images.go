@@ -5,7 +5,11 @@ import (
 	"io"
 	"net/http"
 	"net/url"
+
+	"github.com/docker/docker/pkg/parsers"
 )
+
+const DEFAULTTAG = "latest"
 
 // Images Container.
 type ImagesController struct{}
@@ -74,13 +78,31 @@ func (ic *ImagesController) Create(w http.ResponseWriter, r *http.Request) {
 	if auth != "" {
 		q.Set("X-Registry-Auth", auth)
 	}
-	q.Query(createOptions{
-		FromImage: params.Get("fromImage"),
-		FromSrc:   params.Get("fromSrc"),
-		Repo:      params.Get("repo"),
-		Tag:       params.Get("tag"),
-		Registry:  params.Get("registry"),
-	})
+
+	var (
+		image   = params.Get("fromImage")
+		repo    = params.Get("repo")
+		tag     = params.Get("tag")
+		src     = params.Get("fromSrc")
+		options = createOptions{Registry: params.Get("registry")}
+	)
+
+	if image != "" { // pull
+		if tag == "" {
+			image, tag = parsers.ParseRepositoryTag(image)
+		}
+		options.FromImage = image
+		options.Tag = defaultTo(tag, DEFAULTTAG)
+	} else { // import
+		if tag == "" {
+			repo, tag = parsers.ParseRepositoryTag(repo)
+		}
+		options.FromSrc = src
+		options.Repo = repo
+		options.Tag = defaultTo(tag, DEFAULTTAG)
+	}
+
+	q.Query(options)
 	q.Timeout(0)
 	b, err := q.Do()
 	if !q.ValidateStatusCode(200, 500) && err != nil {
