@@ -24,6 +24,7 @@ Lovingly created and maintained by [DockerPool][] Team.
 ## Features
 
 * Multi Hosts, switch, add, delete
+* Search for an image on Docker Hub
 
 
 ## Quick Start
