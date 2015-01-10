@@ -3,7 +3,6 @@ package app
 import (
 	"fmt"
 	"net/http"
-	"os"
 	"path"
 
 	"github.com/gohttp/app"
@@ -19,14 +18,8 @@ func APIIndex(w http.ResponseWriter, r *http.Request) {
 }
 
 // Start Dockerboard application.
-func Serve() {
-
-	// Set bluewhale dir from ENV BLUEWHALE_DIST or /bluewhale/dist.
-	bluewhale := os.Getenv("BLUEWHALE_DIST")
-	if bluewhale == "" {
-		bluewhale = "/bluewhale/dist/"
-	}
-	dir := path.Join(path.Dir(bluewhale))
+func Run(static, port string) {
+	dir := path.Join(path.Dir(static))
 
 	// The Instances of Controllers.
 	containersController := controllers.NewContainers()
@@ -78,5 +71,5 @@ func Serve() {
 	app.Get("/api/apps", controllers.NewApps().Index)
 
 	// Listen Port.
-	app.Listen(":8001")
+	app.Listen(":" + port)
 }
