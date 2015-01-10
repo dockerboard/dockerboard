@@ -11,7 +11,8 @@ Lovingly created and maintained by [DockerPool][] Team.
 
 [![gitter][gitter-image]][gitter-url]
 [![GoDoc][godoc-image]][godoc-url]
-[![build status][travis-image]][travis-url]...
+[![build status][travis-image]][travis-url]
+[![wercker status][wercker-image]][wercker-url]   
 [![DockerBadge][docker-image]][docker-url]
 
 
@@ -97,5 +98,7 @@ go run dockerboard.go
 [godoc-url]: http://godoc.org/github.com/dockerboard/dockerboard
 [travis-image]: https://img.shields.io/travis/dockerboard/dockerboard/master.svg?style=flat-square
 [travis-url]: https://travis-ci.org/dockerboard/dockerboard
+[wercker-status]: https://app.wercker.com/status/6134bd7bdb90915629df6d86e569a284/s "wercker status"
+[wercker-url]: https://app.wercker.com/project/bykey/6134bd7bdb90915629df6d86e569a284
 [docker-image]: http://dockeri.co/image/dockerboard/dockerboard
 [docker-url]: https://registry.hub.docker.com/u/dockerboard/dockerboard/
