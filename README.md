@@ -29,9 +29,20 @@ Lovingly created and maintained by [DockerPool][] Team.
 
 * Multi Hosts, switch, add, delete
 * Search for an image on Docker Hub, and create image
+* Run locally
 
 
 ## Quick Start
+
+### Run locally
+
+```
+$(boot2docker shellinit)
+go build
+./dockerboard -h
+./dockerboard server -h
+./dockerboard server -s bluewhale/dist -p 8888
+```
 
 ### Open Brower
 
