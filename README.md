@@ -38,15 +38,16 @@ Lovingly created and maintained by [DockerPool][] Team.
 #### Install
 
 ```
-go install github.com/dockerboard/dockerboard
+$ go install github.com/dockerboard/dockerboard
+$ dockerboard -h
 ```
 
 ```
-$(boot2docker shellinit)
-go build
-./dockerboard -h
-./dockerboard server -h
-./dockerboard server -s bluewhale/dist -p 8888
+$ $(boot2docker shellinit)
+$ go build
+$ ./dockerboard -h
+$ ./dockerboard server -h
+$ ./dockerboard server -s bluewhale/dist -p 8888
 ```
 
 ### Open Brower
