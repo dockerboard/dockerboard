@@ -15,16 +15,6 @@ Lovingly created and maintained by [DockerPool][] Team.
 [![wercker status][wercker-image]][wercker-url]   
 [![DockerBadge][docker-image]][docker-url]
 
-
-## Screenshots
-
-![Dockerboard Hub Screenshot](https://raw.githubusercontent.com/dockerboard/bluewhale/master/screenshots/hub_version_ping.gif)
-
-![Dockerboard Hosts Screenshot](https://raw.githubusercontent.com/dockerboard/bluewhale/master/screenshots/hosts.gif)
-
-![Dockerboard Screenshot](https://raw.githubusercontent.com/dockerboard/bluewhale/master/screenshots/dockerboard.gif)
-
-
 ## Features
 
 * Multi Hosts, switch, add, delete
@@ -32,9 +22,24 @@ Lovingly created and maintained by [DockerPool][] Team.
 * Run locally
 
 
+## Screenshots
+
+![Dockerboard Hub Screenshot](https://raw.githubusercontent.com/dockerboard/bluewhale/master/screenshots/hub_version_ping.gif)
+
+
+![Dockerboard Screenshot](https://raw.githubusercontent.com/dockerboard/bluewhale/master/screenshots/dockerboard.gif)
+
+
 ## Quick Start
 
 ### Run locally
+
+
+#### Install
+
+```
+go install github.com/dockerboard/dockerboard
+```
 
 ```
 $(boot2docker shellinit)
