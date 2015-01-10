@@ -11,4 +11,4 @@ RUN git clone --depth 1 https://github.com/dockerboard/bluewhale.git /bluewhale
 
 EXPOSE 8001
 
-ENTRYPOINT ["./dockerboard"]
+ENTRYPOINT ["./dockerboard", "server"]
