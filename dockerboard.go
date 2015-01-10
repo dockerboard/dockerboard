@@ -11,7 +11,7 @@ func main() {
 	app := cli.NewApp()
 	app.Name = "DockerBoard"
 	app.Usage = "Simple dashboards, visualizations, managements for your dockers."
-	app.Version = cmd.VERSION
+	app.Version = VERSION
 	app.Commands = []cli.Command{
 		cmd.CmdServer,
 	}
