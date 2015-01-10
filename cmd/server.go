@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"os"
+	"path/filepath"
 
 	"github.com/codegangsta/cli"
 	"github.com/dockerboard/dockerboard/app"
@@ -29,6 +30,7 @@ func runServer(c *cli.Context) {
 	// Set bluewhale dir from ENV BLUEWHALE_DIST or /bluewhale/dist.
 	bluewhale := defaultTo(c.String("static"), os.Getenv("BLUEWHALE_DIST"))
 	bluewhale = defaultTo(bluewhale, "/bluewhale/dist/")
+	bluewhale, _ = filepath.Abs(bluewhale)
 	port := c.String("port")
 	app.Run(bluewhale, port)
 }

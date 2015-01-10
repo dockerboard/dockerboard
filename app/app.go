@@ -3,7 +3,6 @@ package app
 import (
 	"fmt"
 	"net/http"
-	"path"
 
 	"github.com/gohttp/app"
 	"github.com/gohttp/logger"
@@ -19,7 +18,6 @@ func APIIndex(w http.ResponseWriter, r *http.Request) {
 
 // Start Dockerboard application.
 func Run(static, port string) {
-	dir := path.Join(path.Dir(static))
 
 	// The Instances of Controllers.
 	containersController := controllers.NewContainers()
@@ -33,7 +31,7 @@ func Run(static, port string) {
 	// Create app.
 	app := app.New()
 	app.Use(logger.New())
-	app.Use(serve.New(dir))
+	app.Use(serve.New(static))
 	app.Use(methodoverride.New())
 	app.Get("/api", APIIndex)
 
