@@ -11,8 +11,8 @@ func main() {
 	app := cli.NewApp()
 	app.Name = "DockerBoard"
 	app.Usage = "Simple dashboards, visualizations, managements for your dockers."
-	app.Author = "fundon"
-	app.Email = "cfddream@gmail.com"
+	app.Author = ""
+	app.Email = ""
 	app.Version = cmd.VERSION
 	app.Commands = []cli.Command{
 		cmd.CmdServer,
