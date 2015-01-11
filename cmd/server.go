@@ -4,7 +4,9 @@ import (
 	"os"
 	"path/filepath"
 
+	log "github.com/Sirupsen/logrus"
 	"github.com/codegangsta/cli"
+
 	"github.com/dockerboard/dockerboard/app"
 )
 
@@ -32,6 +34,7 @@ func runServer(c *cli.Context) {
 	bluewhale = defaultTo(bluewhale, "/bluewhale/dist/")
 	bluewhale, _ = filepath.Abs(bluewhale)
 	port := c.String("port")
+	log.Info("Open http://0.0.0.0:" + port)
 	app.Run(bluewhale, port)
 }
 
