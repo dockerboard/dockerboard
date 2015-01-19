@@ -28,6 +28,11 @@ type logsOptions struct {
 	Tail       string `url:"tail"`
 }
 
+// Query Parameters For List processes running inside a container.
+type topOptions struct {
+	PS_Args string `url:"ps_args"`
+}
+
 // Start a container.
 // POST /containers/:id/start
 func (ca *ContainerActionsController) Start(w http.ResponseWriter, r *http.Request) {
@@ -171,6 +176,28 @@ func (ca *ContainerActionsController) Kill(w http.ResponseWriter, r *http.Reques
 	})
 	b, err := q.Do()
 	if !q.ValidateStatusCode(204, 404, 500) && err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	w.WriteHeader(q.StatusCode)
+	io.Copy(w, b)
+}
+
+// List processes running inside a container.
+// GET /containers/:id/top
+func (ca *ContainerActionsController) Top(w http.ResponseWriter, r *http.Request) {
+	params := r.URL.Query()
+	endpoint := fmt.Sprintf("/containers/%s/top", params.Get(":id"))
+	q, err := NewRequest("GET", endpoint, params.Get("host"))
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	q.Query(topOptions{
+		PS_Args: params.Get("ps_args"),
+	})
+	b, err := q.Do()
+	if !q.ValidateStatusCode(200, 404, 500) && err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}

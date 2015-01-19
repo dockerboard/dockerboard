@@ -47,6 +47,7 @@ func Run(static, port string) {
 	app.Post("/api/containers/:id/unpause", containerActionsController.UnPause)
 	app.Post("/api/containers/:id/kill", containerActionsController.Kill)
 	app.Get("/api/containers/:id/logs", containerActionsController.Logs)
+	app.Get("/api/containers/:id/top", containerActionsController.Top)
 
 	// Images CURD APIs etc.
 	app.Get("/api/images", imagesController.Index)
