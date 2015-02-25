@@ -23,11 +23,11 @@ func Run(static, port string) {
 
 	// Create app.
 	app := app.New()
+	app.Use(WSHandler("/ws"))
 	app.Use(logger.New())
 	app.Use(serve.New(static))
 	app.Use(methodoverride.New())
 	app.Get("/api", APIHandler)
-	app.Get("/ws", WSHandler)
 
 	// Controllers CRUD APIs etc.
 	app.Get("/api/containers", containersController.Index)
