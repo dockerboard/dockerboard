@@ -1,7 +1,6 @@
 package app
 
 import (
-	"fmt"
 	"net/http"
 	"strings"
 
@@ -29,9 +28,9 @@ func WSHandler(prefix string) func(h http.Handler) http.Handler {
 }
 
 func echoHandler(session sockjs.Session) {
+	session.Send(session.ID())
 	for {
 		if msg, err := session.Recv(); err == nil {
-			fmt.Println(msg)
 			session.Send(msg)
 			continue
 		}
