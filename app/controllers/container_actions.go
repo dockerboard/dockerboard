@@ -33,6 +33,11 @@ type topOptions struct {
 	PS_Args string `url:"ps_args"`
 }
 
+// Query Parameters For rename a container.
+type renameOptions struct {
+	Name string `url:"name"`
+}
+
 // Start a container.
 // POST /containers/:id/start
 func (ca *ContainerActionsController) Start(w http.ResponseWriter, r *http.Request) {
@@ -196,6 +201,49 @@ func (ca *ContainerActionsController) Top(w http.ResponseWriter, r *http.Request
 	q.Query(topOptions{
 		PS_Args: params.Get("ps_args"),
 	})
+	b, err := q.Do()
+	if !q.ValidateStatusCode(200, 404, 500) && err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	w.WriteHeader(q.StatusCode)
+	io.Copy(w, b)
+}
+
+// Rename the container id to a new_name.
+// POST /containers/:id/rename
+// v1.17
+func (ca *ContainerActionsController) Rename(w http.ResponseWriter, r *http.Request) {
+	params := r.URL.Query()
+	endpoint := fmt.Sprintf("/containers/%s/stats", params.Get(":id"))
+	q, err := NewRequest("GET", endpoint, params.Get("host"))
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	q.Query(renameOptions{
+		Name: params.Get("name"),
+	})
+	b, err := q.Do()
+	if !q.ValidateStatusCode(204, 404, 409, 500) && err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	w.WriteHeader(q.StatusCode)
+	io.Copy(w, b)
+}
+
+// Get container stats based on resource usage.
+// GET /containers/:id/stats
+// v1.17
+func (ca *ContainerActionsController) Stats(w http.ResponseWriter, r *http.Request) {
+	params := r.URL.Query()
+	endpoint := fmt.Sprintf("/containers/%s/stats", params.Get(":id"))
+	q, err := NewRequest("GET", endpoint, params.Get("host"))
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
 	b, err := q.Do()
 	if !q.ValidateStatusCode(200, 404, 500) && err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)

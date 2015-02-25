@@ -1,4 +1,3 @@
-
 # Dockerboard
 
 **Work-In-Process**
@@ -12,7 +11,7 @@ Lovingly created and maintained by [DockerPool][] Team.
 [![gitter][gitter-image]][gitter-url]
 [![GoDoc][godoc-image]][godoc-url]
 [![build status][travis-image]][travis-url]
-[![wercker status][wercker-image]][wercker-url]   
+[![wercker status][wercker-image]][wercker-url]
 [![DockerBadge][docker-image]][docker-url]
 
 ## Features
@@ -55,7 +54,7 @@ $ ./dockerboard server -s bluewhale/dist -p 8888
 ```
 open http://127.0.0.1:8001
 # Or
-open http://$(boot2docker ip 2>/dev/null):8001 
+open http://$(boot2docker ip 2>/dev/null):8001
 ```
 
 ### Build & Run

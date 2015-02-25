@@ -35,7 +35,7 @@ func Run(static, port string) {
 	app.Use(methodoverride.New())
 	app.Get("/api", APIIndex)
 
-	// Controllers CURD APIs etc.
+	// Controllers CRUD APIs etc.
 	app.Get("/api/containers", containersController.Index)
 	app.Post("/api/containers", containersController.Create)
 	app.Get("/api/containers/:id", containersController.Show)
@@ -48,8 +48,10 @@ func Run(static, port string) {
 	app.Post("/api/containers/:id/kill", containerActionsController.Kill)
 	app.Get("/api/containers/:id/logs", containerActionsController.Logs)
 	app.Get("/api/containers/:id/top", containerActionsController.Top)
+	app.Post("/api/containers/:id/rename", containerActionsController.Rename)
+	app.Get("/api/containers/:id/stats", containerActionsController.Stats)
 
-	// Images CURD APIs etc.
+	// Images CRUD APIs etc.
 	app.Get("/api/images", imagesController.Index)
 	app.Post("/api/images", imagesController.Create)
 	app.Get("/api/images/search", imagesController.Search)
@@ -59,7 +61,7 @@ func Run(static, port string) {
 	app.Post("/api/images/:id/tag", imageActionsController.Tag)
 	app.Post("/api/images/:name/push", imageActionsController.Push)
 
-	// Hosts CURD APIs etc.
+	// Hosts CRUD APIs etc.
 	app.Get("/api/hosts", hostsController.Index)
 	app.Post("/api/hosts", hostsController.Create)
 	app.Del("/api/hosts/:id", hostsController.Destroy)

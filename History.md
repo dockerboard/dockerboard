@@ -47,4 +47,3 @@
 ==================
 
   * add container logs
-
