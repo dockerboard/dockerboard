@@ -8,8 +8,10 @@ import (
 	"gopkg.in/igm/sockjs-go.v2/sockjs"
 )
 
+// Websocket prefix.
 const PREFIX = "/ws"
 
+// WSHandler: a middleware for `gohttp`.
 func WSHandler(prefix string) func(h http.Handler) http.Handler {
 	return func(h http.Handler) http.Handler {
 		if prefix == "" {
