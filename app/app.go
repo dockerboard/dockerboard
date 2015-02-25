@@ -1,9 +1,6 @@
 package app
 
 import (
-	"fmt"
-	"net/http"
-
 	"github.com/gohttp/app"
 	"github.com/gohttp/logger"
 	"github.com/gohttp/serve"
@@ -11,10 +8,6 @@ import (
 
 	"github.com/dockerboard/dockerboard/app/controllers"
 )
-
-func APIIndex(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, "Coming soon!\n")
-}
 
 // Start Dockerboard application.
 func Run(static, port string) {
@@ -33,7 +26,8 @@ func Run(static, port string) {
 	app.Use(logger.New())
 	app.Use(serve.New(static))
 	app.Use(methodoverride.New())
-	app.Get("/api", APIIndex)
+	app.Get("/api", APIHandler)
+	app.Get("/ws", WSHandler)
 
 	// Controllers CRUD APIs etc.
 	app.Get("/api/containers", containersController.Index)
