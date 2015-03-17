@@ -4,8 +4,8 @@
 	"Deps": [
 		{
 			"ImportPath": "github.com/Sirupsen/logrus",
-			"Comment": "v0.6.2-15-gd2f9ffa",
-			"Rev": "d2f9ffa1d9cf25b25191b221229effac1b6de526"
+			"Comment": "v0.6.6-2-g2cea0f0",
+			"Rev": "2cea0f0d141f56fae06df5b813ec4119d1c8ccbd"
 		},
 		{
 			"ImportPath": "github.com/bmizerany/pat",
@@ -13,8 +13,8 @@
 		},
 		{
 			"ImportPath": "github.com/codegangsta/cli",
-			"Comment": "1.2.0-62-gbf4a526",
-			"Rev": "bf4a526f48af7badd25d2cb02d587e1b01be3b50"
+			"Comment": "1.2.0-87-g8ce64f1",
+			"Rev": "8ce64f19ff08029a69d11b7615c9b591245450ad"
 		},
 		{
 			"ImportPath": "github.com/docker/docker/pkg/parsers",
@@ -46,8 +46,8 @@
 		},
 		{
 			"ImportPath": "github.com/gohttp/logger",
-			"Comment": "v1.0.0-2-ga232ee4",
-			"Rev": "a232ee4fdb77bf47e771e446c16729034fdbe810"
+			"Comment": "v1.0.0-6-g20658b1",
+			"Rev": "20658b1a61939fb8c67be765923d5fc63ccfcaf0"
 		},
 		{
 			"ImportPath": "github.com/gohttp/response",
@@ -68,13 +68,25 @@
 			"Rev": "d8840cbb2baa915f4836edda4750050a2c0b7aea"
 		},
 		{
+			"ImportPath": "github.com/gorilla/websocket",
+			"Rev": "2dbddebb8266b93c5e6b119efb54e89043186f3f"
+		},
+		{
+			"ImportPath": "github.com/igm/pubsub",
+			"Rev": "e23a3057c0f1483d5c5ce3ec4c5f564287ebfdf2"
+		},
+		{
 			"ImportPath": "github.com/justinas/alice",
-			"Rev": "9350a6710d2aae22dbf40f5aa811c9668924cb02"
+			"Rev": "a3603a812e255d220672cd76841f4bdc3bc4b677"
 		},
 		{
 			"ImportPath": "github.com/segmentio/go-log",
 			"Comment": "v1.8.0-4-g9c7ea0f",
 			"Rev": "9c7ea0f744953ff5220087609a8525790dc01d8b"
+		},
+		{
+			"ImportPath": "gopkg.in/igm/sockjs-go.v2/sockjs",
+			"Rev": "50b75e1901c11bfce4e0467274fcc561e09aec65"
 		}
 	]
 }
