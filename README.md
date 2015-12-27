@@ -2,11 +2,13 @@
 
 **Work-In-Process**
 
+**UPDATED**: Refactor, beginning with `2015-12-01T00:00:00Z`.
+
 Simple dashboards, visualizations, managements for your dockers.
 
 [Dockerboard][] and [Bluewhale][] are working together to make to the Docker awesome.
 
-Lovingly created and maintained by [DockerPool][] Team.
+Lovingly created and maintained by [@fundon][].
 
 [![gitter][gitter-image]][gitter-url]
 [![GoDoc][godoc-image]][godoc-url]
@@ -104,7 +106,7 @@ go run dockerboard.go
 
 [Dockerboard]: https://github.com/dockerboard/dockerboard
 [Bluewhale]: https://github.com/dockerboard/bluewhale
-[DockerPool]: http://dockerpool.com/
+[@fundon]: https://fundon.me
 [boot2docker]: http://boot2docker.io/
 [docker hub]: https://hub.docker.com/
 
